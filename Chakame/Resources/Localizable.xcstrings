@@ -1,0 +1,116 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "AboutUs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درباره"
+          }
+        }
+      }
+    },
+    "AboutUsText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "برگرفته از سایت گنجور"
+          }
+        }
+      }
+    },
+    "Chakame" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "چکامه"
+          }
+        }
+      }
+    },
+    "Favorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علاقه مندی ها"
+          }
+        }
+      }
+    },
+    "Fetching category list" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درحال دریافت  دسته بندی ها"
+          }
+        }
+      }
+    },
+    "Fetching Poets list" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درحال  دریافت اشعار"
+          }
+        }
+      }
+    },
+    "Fetching verses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درحال  دریافت  ابیات"
+          }
+        }
+      }
+    },
+    "Home" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خانه"
+          }
+        }
+      }
+    },
+    "Popular Poets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سخنوران پرمخاطب"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جستجو"
+          }
+        }
+      }
+    },
+    "version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نسخه"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

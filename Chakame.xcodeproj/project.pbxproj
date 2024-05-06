@@ -1,0 +1,1226 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1131B6092BC86F9000605B50 /* PagePoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131B6082BC86F9000605B50 /* PagePoemView.swift */; };
+		116FD6E02B613FAF0015A814 /* ChakameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6DF2B613FAF0015A814 /* ChakameApp.swift */; };
+		116FD6E22B613FAF0015A814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6E12B613FAF0015A814 /* ContentView.swift */; };
+		116FD6E42B613FB10015A814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116FD6E32B613FB10015A814 /* Assets.xcassets */; };
+		116FD6E72B613FB10015A814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116FD6E62B613FB10015A814 /* Preview Assets.xcassets */; };
+		116FD6F12B613FB20015A814 /* ChakameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6F02B613FB20015A814 /* ChakameTests.swift */; };
+		116FD6FB2B613FB20015A814 /* ChakameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6FA2B613FB20015A814 /* ChakameUITests.swift */; };
+		116FD6FD2B613FB20015A814 /* ChakameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6FC2B613FB20015A814 /* ChakameUITestsLaunchTests.swift */; };
+		116FD70D2B61400A0015A814 /* Poet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD70C2B61400A0015A814 /* Poet.swift */; };
+		11A5D38C2B6174A200DB6CFE /* APIManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D38B2B6174A200DB6CFE /* APIManagerMock.swift */; };
+		11A5D38E2B6175F700DB6CFE /* PoetRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D38D2B6175F700DB6CFE /* PoetRequestMock.swift */; };
+		11A5D3902B61770500DB6CFE /* RequestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D38F2B61770500DB6CFE /* RequestManagerTests.swift */; };
+		11A5D39A2B61848E00DB6CFE /* Chakame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3982B61848E00DB6CFE /* Chakame.xcdatamodeld */; };
+		11A5D39C2B618DDD00DB6CFE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D39B2B618DDD00DB6CFE /* Persistence.swift */; };
+		11A5D39F2B618FC100DB6CFE /* CoreDataPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D39E2B618FC100DB6CFE /* CoreDataPersistable.swift */; };
+		11A5D3B32B61BDE200DB6CFE /* Century+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3B22B61BDE200DB6CFE /* Century+CoreData.swift */; };
+		11A5D3B52B61BFB200DB6CFE /* Poet+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3B42B61BFB200DB6CFE /* Poet+CoreData.swift */; };
+		11A5D3B72B62899800DB6CFE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3B62B62899800DB6CFE /* CoreDataHelper.swift */; };
+		11A5D3BA2B6293BF00DB6CFE /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3B92B6293BF00DB6CFE /* CoreDataTests.swift */; };
+		11A5D3BD2B65C57D00DB6CFE /* CenturyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3BC2B65C57D00DB6CFE /* CenturyViewModel.swift */; };
+		11A5D3C02B65CA5000DB6CFE /* FetchCenturiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3BF2B65CA5000DB6CFE /* FetchCenturiesService.swift */; };
+		11A5D3C22B65CC9500DB6CFE /* CenturiesFetcherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3C12B65CC9500DB6CFE /* CenturiesFetcherMock.swift */; };
+		11A5D3C42B65CE2A00DB6CFE /* CenturyStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3C32B65CE2A00DB6CFE /* CenturyStoreService.swift */; };
+		11A5D3C72B69868900DB6CFE /* CenturyViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3C62B69868900DB6CFE /* CenturyViewModelTestCase.swift */; };
+		11A5D3CB2B69B31D00DB6CFE /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3CA2B69B31D00DB6CFE /* CategoryView.swift */; };
+		11A5D3CE2B69B35400DB6CFE /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3CD2B69B35400DB6CFE /* CategoryViewModel.swift */; };
+		11A5D3D02B69B51600DB6CFE /* CategoriesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A5D3CF2B69B51600DB6CFE /* CategoriesMock.json */; };
+		11A5D3D32B69B5E200DB6CFE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3D22B69B5E200DB6CFE /* Category.swift */; };
+		11A5D3D52B69B64800DB6CFE /* CategoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3D42B69B64800DB6CFE /* CategoryContainer.swift */; };
+		11A5D3D72B6A8C4800DB6CFE /* CategoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3D62B6A8C4800DB6CFE /* CategoryMock.swift */; };
+		11A5D3DA2B6A8CBE00DB6CFE /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3D92B6A8CBE00DB6CFE /* Poem.swift */; };
+		11A5D3FD2B6D2A7700DB6CFE /* FetchCategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3FC2B6D2A7700DB6CFE /* FetchCategoriesService.swift */; };
+		11A5D3FF2B6D666300DB6CFE /* CategoryFetcherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D3FE2B6D666300DB6CFE /* CategoryFetcherMock.swift */; };
+		11A5D4012B6D6B3700DB6CFE /* CategoryStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4002B6D6B3700DB6CFE /* CategoryStoreService.swift */; };
+		11A5D4032B6D6BA800DB6CFE /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4022B6D6BA800DB6CFE /* Category+CoreData.swift */; };
+		11A5D4052B6D95A600DB6CFE /* Poem+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4042B6D95A600DB6CFE /* Poem+CoreData.swift */; };
+		11A5D40A2B8160DD00DB6CFE /* CategoryRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4092B8160DD00DB6CFE /* CategoryRequestMock.swift */; };
+		11A5D4102B816EE700DB6CFE /* PoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D40F2B816EE700DB6CFE /* PoemView.swift */; };
+		11A5D4122B8177A200DB6CFE /* FetchPoemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4112B8177A200DB6CFE /* FetchPoemService.swift */; };
+		11A5D4152B8177F200DB6CFE /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4142B8177F200DB6CFE /* Verse.swift */; };
+		11A5D4172B81786200DB6CFE /* PoemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4162B81786200DB6CFE /* PoemViewModel.swift */; };
+		11A5D4192B817BFB00DB6CFE /* VerseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4182B817BFB00DB6CFE /* VerseContainer.swift */; };
+		11A5D41B2B817D0B00DB6CFE /* VerseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D41A2B817D0A00DB6CFE /* VerseMock.swift */; };
+		11A5D41D2B817D3800DB6CFE /* VersesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A5D41C2B817D3800DB6CFE /* VersesMock.json */; };
+		11A5D41F2B81816D00DB6CFE /* VerseStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D41E2B81816D00DB6CFE /* VerseStoreService.swift */; };
+		11A5D4212B8181FB00DB6CFE /* Verse+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4202B8181FB00DB6CFE /* Verse+CoreData.swift */; };
+		11A5D4232B81898500DB6CFE /* PoemFetcherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4222B81898500DB6CFE /* PoemFetcherMock.swift */; };
+		11A5D4252B818C0E00DB6CFE /* PoemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4242B818C0E00DB6CFE /* PoemMock.swift */; };
+		11A5D4292B820B3F00DB6CFE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 11A5D4282B820B3F00DB6CFE /* Localizable.xcstrings */; };
+		11A5D42C2B82189400DB6CFE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D42B2B82189400DB6CFE /* Font.swift */; };
+		11A5D42F2B82193600DB6CFE /* Vazirmatn-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11A5D42E2B82193600DB6CFE /* Vazirmatn-Regular.ttf */; };
+		11A5D4312B82218D00DB6CFE /* PoemStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4302B82218D00DB6CFE /* PoemStoreService.swift */; };
+		11A5D4372B83E89700DB6CFE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4362B83E89700DB6CFE /* FavoriteView.swift */; };
+		11E702482B61437A00171B70 /* Century.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702472B61437A00171B70 /* Century.swift */; };
+		11E7024A2B61451800171B70 /* CenturyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702492B61451800171B70 /* CenturyMock.swift */; };
+		11E7024C2B61470500171B70 /* CenturiesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 11E7024B2B61470500171B70 /* CenturiesMock.json */; };
+		11E702502B61499400171B70 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7024F2B61499400171B70 /* RequestProtocol.swift */; };
+		11E702532B614A7000171B70 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702522B614A7000171B70 /* RequestType.swift */; };
+		11E702552B614BAB00171B70 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702542B614BAB00171B70 /* APIConstants.swift */; };
+		11E702582B614CD300171B70 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702572B614CD300171B70 /* NetworkError.swift */; };
+		11E7025A2B6151DE00171B70 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702592B6151DE00171B70 /* APIManager.swift */; };
+		11E7025C2B6153F100171B70 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7025B2B6153F100171B70 /* RequestManager.swift */; };
+		11E7025F2B61553500171B70 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7025E2B61553500171B70 /* DataParser.swift */; };
+		11E702612B615B1500171B70 /* PoetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702602B615B1500171B70 /* PoetRequest.swift */; };
+		11E702662B6160AA00171B70 /* CenturiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702652B6160AA00171B70 /* CenturiesView.swift */; };
+		11E702682B61657000171B70 /* CentuaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702672B61657000171B70 /* CentuaryContainer.swift */; };
+		11E7026A2B6166F100171B70 /* PoetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702692B6166F100171B70 /* PoetRow.swift */; };
+		11E7026C2B61691900171B70 /* PoetMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7026B2B61691900171B70 /* PoetMock.swift */; };
+		11E7026E2B61694F00171B70 /* PoetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7026D2B61694F00171B70 /* PoetContainer.swift */; };
+		11E702722B6169F500171B70 /* PoetsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 11E702712B6169F500171B70 /* PoetsMock.json */; };
+		11EE65BD2B9F918600CABA37 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EE65BC2B9F918600CABA37 /* SettingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		116FD6ED2B613FB20015A814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 116FD6D42B613FAF0015A814 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 116FD6DB2B613FAF0015A814;
+			remoteInfo = Chakame;
+		};
+		116FD6F72B613FB20015A814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 116FD6D42B613FAF0015A814 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 116FD6DB2B613FAF0015A814;
+			remoteInfo = Chakame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		11A5D3EB2B6BEC4F00DB6CFE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1131B6082BC86F9000605B50 /* PagePoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePoemView.swift; sourceTree = "<group>"; };
+		116FD6DC2B613FAF0015A814 /* Chakame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chakame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		116FD6DF2B613FAF0015A814 /* ChakameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChakameApp.swift; sourceTree = "<group>"; };
+		116FD6E12B613FAF0015A814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		116FD6E32B613FB10015A814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		116FD6E62B613FB10015A814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		116FD6EC2B613FB20015A814 /* ChakameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChakameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		116FD6F02B613FB20015A814 /* ChakameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChakameTests.swift; sourceTree = "<group>"; };
+		116FD6F62B613FB20015A814 /* ChakameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChakameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		116FD6FA2B613FB20015A814 /* ChakameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChakameUITests.swift; sourceTree = "<group>"; };
+		116FD6FC2B613FB20015A814 /* ChakameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChakameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		116FD70C2B61400A0015A814 /* Poet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poet.swift; sourceTree = "<group>"; };
+		11A5D38B2B6174A200DB6CFE /* APIManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerMock.swift; sourceTree = "<group>"; };
+		11A5D38D2B6175F700DB6CFE /* PoetRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetRequestMock.swift; sourceTree = "<group>"; };
+		11A5D38F2B61770500DB6CFE /* RequestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerTests.swift; sourceTree = "<group>"; };
+		11A5D3992B61848E00DB6CFE /* ChakameSave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChakameSave.xcdatamodel; sourceTree = "<group>"; };
+		11A5D39B2B618DDD00DB6CFE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		11A5D39E2B618FC100DB6CFE /* CoreDataPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistable.swift; sourceTree = "<group>"; };
+		11A5D3B22B61BDE200DB6CFE /* Century+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Century+CoreData.swift"; sourceTree = "<group>"; };
+		11A5D3B42B61BFB200DB6CFE /* Poet+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Poet+CoreData.swift"; sourceTree = "<group>"; };
+		11A5D3B62B62899800DB6CFE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		11A5D3B92B6293BF00DB6CFE /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		11A5D3BC2B65C57D00DB6CFE /* CenturyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyViewModel.swift; sourceTree = "<group>"; };
+		11A5D3BF2B65CA5000DB6CFE /* FetchCenturiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCenturiesService.swift; sourceTree = "<group>"; };
+		11A5D3C12B65CC9500DB6CFE /* CenturiesFetcherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturiesFetcherMock.swift; sourceTree = "<group>"; };
+		11A5D3C32B65CE2A00DB6CFE /* CenturyStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyStoreService.swift; sourceTree = "<group>"; };
+		11A5D3C62B69868900DB6CFE /* CenturyViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyViewModelTestCase.swift; sourceTree = "<group>"; };
+		11A5D3CA2B69B31D00DB6CFE /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		11A5D3CD2B69B35400DB6CFE /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		11A5D3CF2B69B51600DB6CFE /* CategoriesMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CategoriesMock.json; sourceTree = "<group>"; };
+		11A5D3D22B69B5E200DB6CFE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		11A5D3D42B69B64800DB6CFE /* CategoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContainer.swift; sourceTree = "<group>"; };
+		11A5D3D62B6A8C4800DB6CFE /* CategoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMock.swift; sourceTree = "<group>"; };
+		11A5D3D92B6A8CBE00DB6CFE /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
+		11A5D3FC2B6D2A7700DB6CFE /* FetchCategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCategoriesService.swift; sourceTree = "<group>"; };
+		11A5D3FE2B6D666300DB6CFE /* CategoryFetcherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFetcherMock.swift; sourceTree = "<group>"; };
+		11A5D4002B6D6B3700DB6CFE /* CategoryStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStoreService.swift; sourceTree = "<group>"; };
+		11A5D4022B6D6BA800DB6CFE /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
+		11A5D4042B6D95A600DB6CFE /* Poem+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Poem+CoreData.swift"; sourceTree = "<group>"; };
+		11A5D4092B8160DD00DB6CFE /* CategoryRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequestMock.swift; sourceTree = "<group>"; };
+		11A5D40F2B816EE700DB6CFE /* PoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemView.swift; sourceTree = "<group>"; };
+		11A5D4112B8177A200DB6CFE /* FetchPoemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPoemService.swift; sourceTree = "<group>"; };
+		11A5D4142B8177F200DB6CFE /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
+		11A5D4162B81786200DB6CFE /* PoemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemViewModel.swift; sourceTree = "<group>"; };
+		11A5D4182B817BFB00DB6CFE /* VerseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseContainer.swift; sourceTree = "<group>"; };
+		11A5D41A2B817D0A00DB6CFE /* VerseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseMock.swift; sourceTree = "<group>"; };
+		11A5D41C2B817D3800DB6CFE /* VersesMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VersesMock.json; sourceTree = "<group>"; };
+		11A5D41E2B81816D00DB6CFE /* VerseStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseStoreService.swift; sourceTree = "<group>"; };
+		11A5D4202B8181FB00DB6CFE /* Verse+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Verse+CoreData.swift"; sourceTree = "<group>"; };
+		11A5D4222B81898500DB6CFE /* PoemFetcherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemFetcherMock.swift; sourceTree = "<group>"; };
+		11A5D4242B818C0E00DB6CFE /* PoemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemMock.swift; sourceTree = "<group>"; };
+		11A5D4262B82066E00DB6CFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A5D4282B820B3F00DB6CFE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		11A5D42B2B82189400DB6CFE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		11A5D42E2B82193600DB6CFE /* Vazirmatn-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazirmatn-Regular.ttf"; sourceTree = "<group>"; };
+		11A5D4302B82218D00DB6CFE /* PoemStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemStoreService.swift; sourceTree = "<group>"; };
+		11A5D4362B83E89700DB6CFE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		11E702472B61437A00171B70 /* Century.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Century.swift; sourceTree = "<group>"; };
+		11E702492B61451800171B70 /* CenturyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyMock.swift; sourceTree = "<group>"; };
+		11E7024B2B61470500171B70 /* CenturiesMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CenturiesMock.json; sourceTree = "<group>"; };
+		11E7024F2B61499400171B70 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		11E702522B614A7000171B70 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		11E702542B614BAB00171B70 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		11E702572B614CD300171B70 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		11E702592B6151DE00171B70 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		11E7025B2B6153F100171B70 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		11E7025E2B61553500171B70 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		11E702602B615B1500171B70 /* PoetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetRequest.swift; sourceTree = "<group>"; };
+		11E702652B6160AA00171B70 /* CenturiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturiesView.swift; sourceTree = "<group>"; };
+		11E702672B61657000171B70 /* CentuaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentuaryContainer.swift; sourceTree = "<group>"; };
+		11E702692B6166F100171B70 /* PoetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetRow.swift; sourceTree = "<group>"; };
+		11E7026B2B61691900171B70 /* PoetMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetMock.swift; sourceTree = "<group>"; };
+		11E7026D2B61694F00171B70 /* PoetContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetContainer.swift; sourceTree = "<group>"; };
+		11E702712B6169F500171B70 /* PoetsMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PoetsMock.json; sourceTree = "<group>"; };
+		11EE65BC2B9F918600CABA37 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		116FD6D92B613FAF0015A814 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6E92B613FB20015A814 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6F32B613FB20015A814 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		116FD6D32B613FAF0015A814 = {
+			isa = PBXGroup;
+			children = (
+				116FD6DE2B613FAF0015A814 /* Chakame */,
+				116FD6EF2B613FB20015A814 /* ChakameTests */,
+				116FD6F92B613FB20015A814 /* ChakameUITests */,
+				116FD6DD2B613FAF0015A814 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		116FD6DD2B613FAF0015A814 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				116FD6DC2B613FAF0015A814 /* Chakame.app */,
+				116FD6EC2B613FB20015A814 /* ChakameTests.xctest */,
+				116FD6F62B613FB20015A814 /* ChakameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		116FD6DE2B613FAF0015A814 /* Chakame */ = {
+			isa = PBXGroup;
+			children = (
+				11EE65BA2B9F915500CABA37 /* Setting */,
+				11A5D4322B83E85400DB6CFE /* Favorite */,
+				11A5D40B2B816E5F00DB6CFE /* Poem */,
+				11A5D3C82B69B2F000DB6CFE /* Category */,
+				11E702632B61606400171B70 /* Centuries */,
+				116FD7092B613FC80015A814 /* Core */,
+				11A5D4272B82093200DB6CFE /* Resources */,
+				11A5D42A2B82187E00DB6CFE /* Utils */,
+				116FD6DF2B613FAF0015A814 /* ChakameApp.swift */,
+				116FD6E12B613FAF0015A814 /* ContentView.swift */,
+				116FD6E32B613FB10015A814 /* Assets.xcassets */,
+				116FD6E52B613FB10015A814 /* Preview Content */,
+			);
+			path = Chakame;
+			sourceTree = "<group>";
+		};
+		116FD6E52B613FB10015A814 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				116FD6E62B613FB10015A814 /* Preview Assets.xcassets */,
+				11E7024B2B61470500171B70 /* CenturiesMock.json */,
+				11E702712B6169F500171B70 /* PoetsMock.json */,
+				11A5D3CF2B69B51600DB6CFE /* CategoriesMock.json */,
+				11A5D41C2B817D3800DB6CFE /* VersesMock.json */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		116FD6EF2B613FB20015A814 /* ChakameTests */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3852B61743900DB6CFE /* Tests */,
+				116FD6F02B613FB20015A814 /* ChakameTests.swift */,
+			);
+			path = ChakameTests;
+			sourceTree = "<group>";
+		};
+		116FD6F92B613FB20015A814 /* ChakameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				116FD6FA2B613FB20015A814 /* ChakameUITests.swift */,
+				116FD6FC2B613FB20015A814 /* ChakameUITestsLaunchTests.swift */,
+			);
+			path = ChakameUITests;
+			sourceTree = "<group>";
+		};
+		116FD7092B613FC80015A814 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				11E7024D2B61497500171B70 /* data */,
+				116FD70A2B613FD00015A814 /* domain */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		116FD70A2B613FD00015A814 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				116FD70B2B613FD90015A814 /* model */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		116FD70B2B613FD90015A814 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4132B8177E700DB6CFE /* verse */,
+				11A5D3D82B6A8CB200DB6CFE /* poem */,
+				11A5D3D12B69B5C800DB6CFE /* category */,
+				11E7026F2B61698400171B70 /* poet */,
+				11E702702B61699200171B70 /* century */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		11A5D3852B61743900DB6CFE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3C52B69866100DB6CFE /* Centuries */,
+				11A5D3862B61744400DB6CFE /* Core */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		11A5D3862B61744400DB6CFE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3872B61745000DB6CFE /* data */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		11A5D3872B61745000DB6CFE /* data */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3B82B6293AA00DB6CFE /* coreData */,
+				11A5D3882B61745900DB6CFE /* api */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		11A5D3882B61745900DB6CFE /* api */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D38A2B61747700DB6CFE /* helper */,
+				11A5D3892B61746B00DB6CFE /* mock */,
+				11A5D38F2B61770500DB6CFE /* RequestManagerTests.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		11A5D3892B61746B00DB6CFE /* mock */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D38B2B6174A200DB6CFE /* APIManagerMock.swift */,
+				11A5D38D2B6175F700DB6CFE /* PoetRequestMock.swift */,
+				11A5D4092B8160DD00DB6CFE /* CategoryRequestMock.swift */,
+			);
+			path = mock;
+			sourceTree = "<group>";
+		};
+		11A5D38A2B61747700DB6CFE /* helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		11A5D3912B61837000DB6CFE /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D39D2B618FB200DB6CFE /* extensions */,
+				11A5D3982B61848E00DB6CFE /* Chakame.xcdatamodeld */,
+				11A5D39B2B618DDD00DB6CFE /* Persistence.swift */,
+				11A5D3B62B62899800DB6CFE /* CoreDataHelper.swift */,
+			);
+			path = coreData;
+			sourceTree = "<group>";
+		};
+		11A5D39D2B618FB200DB6CFE /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D39E2B618FC100DB6CFE /* CoreDataPersistable.swift */,
+				11A5D3B22B61BDE200DB6CFE /* Century+CoreData.swift */,
+				11A5D3B42B61BFB200DB6CFE /* Poet+CoreData.swift */,
+				11A5D4022B6D6BA800DB6CFE /* Category+CoreData.swift */,
+				11A5D4202B8181FB00DB6CFE /* Verse+CoreData.swift */,
+				11A5D4042B6D95A600DB6CFE /* Poem+CoreData.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		11A5D3B82B6293AA00DB6CFE /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3B92B6293BF00DB6CFE /* CoreDataTests.swift */,
+			);
+			path = coreData;
+			sourceTree = "<group>";
+		};
+		11A5D3BB2B65C56D00DB6CFE /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3BC2B65C57D00DB6CFE /* CenturyViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		11A5D3BE2B65CA3800DB6CFE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3BF2B65CA5000DB6CFE /* FetchCenturiesService.swift */,
+				11A5D3C12B65CC9500DB6CFE /* CenturiesFetcherMock.swift */,
+				11A5D3C32B65CE2A00DB6CFE /* CenturyStoreService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		11A5D3C52B69866100DB6CFE /* Centuries */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3C62B69868900DB6CFE /* CenturyViewModelTestCase.swift */,
+			);
+			path = Centuries;
+			sourceTree = "<group>";
+		};
+		11A5D3C82B69B2F000DB6CFE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3FB2B6D2A6300DB6CFE /* services */,
+				11A5D3CC2B69B33900DB6CFE /* viewModels */,
+				11A5D3C92B69B30400DB6CFE /* views */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		11A5D3C92B69B30400DB6CFE /* views */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3CA2B69B31D00DB6CFE /* CategoryView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		11A5D3CC2B69B33900DB6CFE /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3CD2B69B35400DB6CFE /* CategoryViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		11A5D3D12B69B5C800DB6CFE /* category */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3D22B69B5E200DB6CFE /* Category.swift */,
+				11A5D3D42B69B64800DB6CFE /* CategoryContainer.swift */,
+				11A5D3D62B6A8C4800DB6CFE /* CategoryMock.swift */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		11A5D3D82B6A8CB200DB6CFE /* poem */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3D92B6A8CBE00DB6CFE /* Poem.swift */,
+				11A5D4242B818C0E00DB6CFE /* PoemMock.swift */,
+			);
+			path = poem;
+			sourceTree = "<group>";
+		};
+		11A5D3FB2B6D2A6300DB6CFE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3FC2B6D2A7700DB6CFE /* FetchCategoriesService.swift */,
+				11A5D3FE2B6D666300DB6CFE /* CategoryFetcherMock.swift */,
+				11A5D4002B6D6B3700DB6CFE /* CategoryStoreService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		11A5D40B2B816E5F00DB6CFE /* Poem */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D40E2B816E8600DB6CFE /* services */,
+				11A5D40D2B816E7A00DB6CFE /* viewModel */,
+				11A5D40C2B816E7100DB6CFE /* view */,
+			);
+			path = Poem;
+			sourceTree = "<group>";
+		};
+		11A5D40C2B816E7100DB6CFE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D40F2B816EE700DB6CFE /* PoemView.swift */,
+				1131B6082BC86F9000605B50 /* PagePoemView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		11A5D40D2B816E7A00DB6CFE /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4162B81786200DB6CFE /* PoemViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		11A5D40E2B816E8600DB6CFE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4112B8177A200DB6CFE /* FetchPoemService.swift */,
+				11A5D4222B81898500DB6CFE /* PoemFetcherMock.swift */,
+				11A5D41E2B81816D00DB6CFE /* VerseStoreService.swift */,
+				11A5D4302B82218D00DB6CFE /* PoemStoreService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		11A5D4132B8177E700DB6CFE /* verse */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4142B8177F200DB6CFE /* Verse.swift */,
+				11A5D4182B817BFB00DB6CFE /* VerseContainer.swift */,
+				11A5D41A2B817D0A00DB6CFE /* VerseMock.swift */,
+			);
+			path = verse;
+			sourceTree = "<group>";
+		};
+		11A5D4272B82093200DB6CFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D42D2B82190D00DB6CFE /* Font */,
+				11A5D4262B82066E00DB6CFE /* Info.plist */,
+				11A5D4282B820B3F00DB6CFE /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		11A5D42A2B82187E00DB6CFE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D42B2B82189400DB6CFE /* Font.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		11A5D42D2B82190D00DB6CFE /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D42E2B82193600DB6CFE /* Vazirmatn-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		11A5D4322B83E85400DB6CFE /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4332B83E86900DB6CFE /* views */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		11A5D4332B83E86900DB6CFE /* views */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D4362B83E89700DB6CFE /* FavoriteView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		11E7024D2B61497500171B70 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3912B61837000DB6CFE /* coreData */,
+				11E7024E2B61497E00171B70 /* api */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		11E7024E2B61497E00171B70 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				11E7025D2B61552200171B70 /* parser */,
+				11E702562B614CC300171B70 /* network */,
+				11E702512B614A5D00171B70 /* request */,
+				11E702542B614BAB00171B70 /* APIConstants.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		11E702512B614A5D00171B70 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				11E702622B615E9800171B70 /* poets */,
+				11E7024F2B61499400171B70 /* RequestProtocol.swift */,
+				11E702522B614A7000171B70 /* RequestType.swift */,
+			);
+			path = request;
+			sourceTree = "<group>";
+		};
+		11E702562B614CC300171B70 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				11E702572B614CD300171B70 /* NetworkError.swift */,
+				11E702592B6151DE00171B70 /* APIManager.swift */,
+				11E7025B2B6153F100171B70 /* RequestManager.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		11E7025D2B61552200171B70 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				11E7025E2B61553500171B70 /* DataParser.swift */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		11E702622B615E9800171B70 /* poets */ = {
+			isa = PBXGroup;
+			children = (
+				11E702602B615B1500171B70 /* PoetRequest.swift */,
+			);
+			path = poets;
+			sourceTree = "<group>";
+		};
+		11E702632B61606400171B70 /* Centuries */ = {
+			isa = PBXGroup;
+			children = (
+				11A5D3BE2B65CA3800DB6CFE /* services */,
+				11A5D3BB2B65C56D00DB6CFE /* viewModels */,
+				11E702642B61608E00171B70 /* views */,
+			);
+			path = Centuries;
+			sourceTree = "<group>";
+		};
+		11E702642B61608E00171B70 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				11E702652B6160AA00171B70 /* CenturiesView.swift */,
+				11E702692B6166F100171B70 /* PoetRow.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		11E7026F2B61698400171B70 /* poet */ = {
+			isa = PBXGroup;
+			children = (
+				116FD70C2B61400A0015A814 /* Poet.swift */,
+				11E7026D2B61694F00171B70 /* PoetContainer.swift */,
+				11E7026B2B61691900171B70 /* PoetMock.swift */,
+			);
+			path = poet;
+			sourceTree = "<group>";
+		};
+		11E702702B61699200171B70 /* century */ = {
+			isa = PBXGroup;
+			children = (
+				11E702472B61437A00171B70 /* Century.swift */,
+				11E702672B61657000171B70 /* CentuaryContainer.swift */,
+				11E702492B61451800171B70 /* CenturyMock.swift */,
+			);
+			path = century;
+			sourceTree = "<group>";
+		};
+		11EE65BA2B9F915500CABA37 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				11EE65BB2B9F916600CABA37 /* views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		11EE65BB2B9F916600CABA37 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				11EE65BC2B9F918600CABA37 /* SettingView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		116FD6DB2B613FAF0015A814 /* Chakame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 116FD7002B613FB20015A814 /* Build configuration list for PBXNativeTarget "Chakame" */;
+			buildPhases = (
+				116FD6D82B613FAF0015A814 /* Sources */,
+				116FD6D92B613FAF0015A814 /* Frameworks */,
+				116FD6DA2B613FAF0015A814 /* Resources */,
+				11A5D3EB2B6BEC4F00DB6CFE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Chakame;
+			productName = Chakame;
+			productReference = 116FD6DC2B613FAF0015A814 /* Chakame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		116FD6EB2B613FB20015A814 /* ChakameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 116FD7032B613FB20015A814 /* Build configuration list for PBXNativeTarget "ChakameTests" */;
+			buildPhases = (
+				116FD6E82B613FB20015A814 /* Sources */,
+				116FD6E92B613FB20015A814 /* Frameworks */,
+				116FD6EA2B613FB20015A814 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				116FD6EE2B613FB20015A814 /* PBXTargetDependency */,
+			);
+			name = ChakameTests;
+			productName = ChakameTests;
+			productReference = 116FD6EC2B613FB20015A814 /* ChakameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		116FD6F52B613FB20015A814 /* ChakameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 116FD7062B613FB20015A814 /* Build configuration list for PBXNativeTarget "ChakameUITests" */;
+			buildPhases = (
+				116FD6F22B613FB20015A814 /* Sources */,
+				116FD6F32B613FB20015A814 /* Frameworks */,
+				116FD6F42B613FB20015A814 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				116FD6F82B613FB20015A814 /* PBXTargetDependency */,
+			);
+			name = ChakameUITests;
+			productName = ChakameUITests;
+			productReference = 116FD6F62B613FB20015A814 /* ChakameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		116FD6D42B613FAF0015A814 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					116FD6DB2B613FAF0015A814 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					116FD6EB2B613FB20015A814 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 116FD6DB2B613FAF0015A814;
+					};
+					116FD6F52B613FB20015A814 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 116FD6DB2B613FAF0015A814;
+					};
+				};
+			};
+			buildConfigurationList = 116FD6D72B613FAF0015A814 /* Build configuration list for PBXProject "Chakame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 116FD6D32B613FAF0015A814;
+			productRefGroup = 116FD6DD2B613FAF0015A814 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				116FD6DB2B613FAF0015A814 /* Chakame */,
+				116FD6EB2B613FB20015A814 /* ChakameTests */,
+				116FD6F52B613FB20015A814 /* ChakameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		116FD6DA2B613FAF0015A814 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E7024C2B61470500171B70 /* CenturiesMock.json in Resources */,
+				11A5D41D2B817D3800DB6CFE /* VersesMock.json in Resources */,
+				11A5D3D02B69B51600DB6CFE /* CategoriesMock.json in Resources */,
+				116FD6E72B613FB10015A814 /* Preview Assets.xcassets in Resources */,
+				11A5D42F2B82193600DB6CFE /* Vazirmatn-Regular.ttf in Resources */,
+				116FD6E42B613FB10015A814 /* Assets.xcassets in Resources */,
+				11A5D4292B820B3F00DB6CFE /* Localizable.xcstrings in Resources */,
+				11E702722B6169F500171B70 /* PoetsMock.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6EA2B613FB20015A814 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6F42B613FB20015A814 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		116FD6D82B613FAF0015A814 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E702482B61437A00171B70 /* Century.swift in Sources */,
+				11EE65BD2B9F918600CABA37 /* SettingView.swift in Sources */,
+				11A5D41B2B817D0B00DB6CFE /* VerseMock.swift in Sources */,
+				11E7026E2B61694F00171B70 /* PoetContainer.swift in Sources */,
+				11A5D3FD2B6D2A7700DB6CFE /* FetchCategoriesService.swift in Sources */,
+				11A5D4192B817BFB00DB6CFE /* VerseContainer.swift in Sources */,
+				11E7026C2B61691900171B70 /* PoetMock.swift in Sources */,
+				11A5D3D32B69B5E200DB6CFE /* Category.swift in Sources */,
+				11E702682B61657000171B70 /* CentuaryContainer.swift in Sources */,
+				11A5D4372B83E89700DB6CFE /* FavoriteView.swift in Sources */,
+				11E7024A2B61451800171B70 /* CenturyMock.swift in Sources */,
+				11E7025F2B61553500171B70 /* DataParser.swift in Sources */,
+				11A5D39F2B618FC100DB6CFE /* CoreDataPersistable.swift in Sources */,
+				11E7025A2B6151DE00171B70 /* APIManager.swift in Sources */,
+				11A5D4232B81898500DB6CFE /* PoemFetcherMock.swift in Sources */,
+				11A5D4252B818C0E00DB6CFE /* PoemMock.swift in Sources */,
+				11E702532B614A7000171B70 /* RequestType.swift in Sources */,
+				11E702662B6160AA00171B70 /* CenturiesView.swift in Sources */,
+				11A5D4052B6D95A600DB6CFE /* Poem+CoreData.swift in Sources */,
+				11A5D4102B816EE700DB6CFE /* PoemView.swift in Sources */,
+				11A5D39C2B618DDD00DB6CFE /* Persistence.swift in Sources */,
+				11A5D3B32B61BDE200DB6CFE /* Century+CoreData.swift in Sources */,
+				11A5D39A2B61848E00DB6CFE /* Chakame.xcdatamodeld in Sources */,
+				116FD6E22B613FAF0015A814 /* ContentView.swift in Sources */,
+				11A5D3B52B61BFB200DB6CFE /* Poet+CoreData.swift in Sources */,
+				11A5D3FF2B6D666300DB6CFE /* CategoryFetcherMock.swift in Sources */,
+				11A5D3C22B65CC9500DB6CFE /* CenturiesFetcherMock.swift in Sources */,
+				11A5D4152B8177F200DB6CFE /* Verse.swift in Sources */,
+				11E702552B614BAB00171B70 /* APIConstants.swift in Sources */,
+				11E702502B61499400171B70 /* RequestProtocol.swift in Sources */,
+				11A5D3D72B6A8C4800DB6CFE /* CategoryMock.swift in Sources */,
+				11A5D3D52B69B64800DB6CFE /* CategoryContainer.swift in Sources */,
+				11E7025C2B6153F100171B70 /* RequestManager.swift in Sources */,
+				11A5D3BD2B65C57D00DB6CFE /* CenturyViewModel.swift in Sources */,
+				11A5D42C2B82189400DB6CFE /* Font.swift in Sources */,
+				11A5D3C42B65CE2A00DB6CFE /* CenturyStoreService.swift in Sources */,
+				11A5D4032B6D6BA800DB6CFE /* Category+CoreData.swift in Sources */,
+				11A5D3C02B65CA5000DB6CFE /* FetchCenturiesService.swift in Sources */,
+				11A5D4012B6D6B3700DB6CFE /* CategoryStoreService.swift in Sources */,
+				11A5D3CE2B69B35400DB6CFE /* CategoryViewModel.swift in Sources */,
+				11A5D3CB2B69B31D00DB6CFE /* CategoryView.swift in Sources */,
+				11A5D3B72B62899800DB6CFE /* CoreDataHelper.swift in Sources */,
+				11A5D4312B82218D00DB6CFE /* PoemStoreService.swift in Sources */,
+				11A5D41F2B81816D00DB6CFE /* VerseStoreService.swift in Sources */,
+				11A5D3DA2B6A8CBE00DB6CFE /* Poem.swift in Sources */,
+				1131B6092BC86F9000605B50 /* PagePoemView.swift in Sources */,
+				11E702582B614CD300171B70 /* NetworkError.swift in Sources */,
+				11A5D4122B8177A200DB6CFE /* FetchPoemService.swift in Sources */,
+				116FD70D2B61400A0015A814 /* Poet.swift in Sources */,
+				11A5D4172B81786200DB6CFE /* PoemViewModel.swift in Sources */,
+				11E7026A2B6166F100171B70 /* PoetRow.swift in Sources */,
+				116FD6E02B613FAF0015A814 /* ChakameApp.swift in Sources */,
+				11E702612B615B1500171B70 /* PoetRequest.swift in Sources */,
+				11A5D4212B8181FB00DB6CFE /* Verse+CoreData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6E82B613FB20015A814 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11A5D40A2B8160DD00DB6CFE /* CategoryRequestMock.swift in Sources */,
+				11A5D38C2B6174A200DB6CFE /* APIManagerMock.swift in Sources */,
+				11A5D3C72B69868900DB6CFE /* CenturyViewModelTestCase.swift in Sources */,
+				116FD6F12B613FB20015A814 /* ChakameTests.swift in Sources */,
+				11A5D38E2B6175F700DB6CFE /* PoetRequestMock.swift in Sources */,
+				11A5D3902B61770500DB6CFE /* RequestManagerTests.swift in Sources */,
+				11A5D3BA2B6293BF00DB6CFE /* CoreDataTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116FD6F22B613FB20015A814 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				116FD6FB2B613FB20015A814 /* ChakameUITests.swift in Sources */,
+				116FD6FD2B613FB20015A814 /* ChakameUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		116FD6EE2B613FB20015A814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 116FD6DB2B613FAF0015A814 /* Chakame */;
+			targetProxy = 116FD6ED2B613FB20015A814 /* PBXContainerItemProxy */;
+		};
+		116FD6F82B613FB20015A814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 116FD6DB2B613FAF0015A814 /* Chakame */;
+			targetProxy = 116FD6F72B613FB20015A814 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		116FD6FE2B613FB20015A814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		116FD6FF2B613FB20015A814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		116FD7012B613FB20015A814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Chakame/Preview Content\"";
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Chakame/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.Chakame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		116FD7022B613FB20015A814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Chakame/Preview Content\"";
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Chakame/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.Chakame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		116FD7042B613FB20015A814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.ChakameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chakame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chakame";
+			};
+			name = Debug;
+		};
+		116FD7052B613FB20015A814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.ChakameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chakame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chakame";
+			};
+			name = Release;
+		};
+		116FD7072B613FB20015A814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.ChakameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Chakame;
+			};
+			name = Debug;
+		};
+		116FD7082B613FB20015A814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ZQ8C59RST;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = milad.ajilian.ChakameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Chakame;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		116FD6D72B613FAF0015A814 /* Build configuration list for PBXProject "Chakame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				116FD6FE2B613FB20015A814 /* Debug */,
+				116FD6FF2B613FB20015A814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		116FD7002B613FB20015A814 /* Build configuration list for PBXNativeTarget "Chakame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				116FD7012B613FB20015A814 /* Debug */,
+				116FD7022B613FB20015A814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		116FD7032B613FB20015A814 /* Build configuration list for PBXNativeTarget "ChakameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				116FD7042B613FB20015A814 /* Debug */,
+				116FD7052B613FB20015A814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		116FD7062B613FB20015A814 /* Build configuration list for PBXNativeTarget "ChakameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				116FD7072B613FB20015A814 /* Debug */,
+				116FD7082B613FB20015A814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		11A5D3982B61848E00DB6CFE /* Chakame.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				11A5D3992B61848E00DB6CFE /* ChakameSave.xcdatamodel */,
+			);
+			currentVersion = 11A5D3992B61848E00DB6CFE /* ChakameSave.xcdatamodel */;
+			path = Chakame.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 116FD6D42B613FAF0015A814 /* Project object */;
+}
