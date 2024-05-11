@@ -24,8 +24,6 @@ protocol PoemFetcher {
 final class PoemViewModel: ObservableObject {
     @Published var isLoading: Bool
     @Published var isFavorite: Bool = false
-    var poem: PoemEntity
-    
     
     private var poemFetcher: PoemFetcher
     private var verseStore: VerseStore = VerseStoreService()
@@ -33,30 +31,30 @@ final class PoemViewModel: ObservableObject {
     
     init(
         isLoading: Bool  = false,
-        poem: PoemEntity,
-        poemFetcher: PoemFetcher,
-        poemStore: PoemStore
+        poemFetcher: PoemFetcher = FetchPoemService(requestManager: RequestManager.shared),
+        poemStore: PoemStore = PoemStoreService(context: PersistenceController.shared.container.newBackgroundContext())
     ) {
         self.isLoading = isLoading
-        self.poem = poem
-        self.isFavorite = poem.isFavorite
         self.poemFetcher = poemFetcher
         self.poemStore = poemStore
     }
     
-    
-    func fetchVerses() async {
-        guard isLoading == false else { return }
+    func fetchVerses(poem: PoemEntity) {
         
+        Task {
+            await self.fetchVerses(poemId: poem.id)
+        }
+    }
+    private func fetchVerses(poemId: Int32) async {
+        guard !checkForExistingVerse(poemId: poemId) else { return }
         isLoading = true
-        
-        guard let poem = await poemFetcher.fetchPoem(poemId: poem.id) else {
+        guard let poem = await poemFetcher.fetchPoem(poemId: poemId) else {
             return
         }
         do {
             try await verseStore.save(
                 verses: poem.verses ?? [],
-                poemId: self.poem.id
+                poemId: poemId
             )
             
             try await poemStore.update(poem: poem)
@@ -68,31 +66,19 @@ final class PoemViewModel: ObservableObject {
         }
     }
     
-    func getVerseFetchRequest() -> NSFetchRequest<VerseEntity> {
-        let verseRequest: NSFetchRequest<VerseEntity> = VerseEntity.fetchRequest()
-        verseRequest.predicate = NSPredicate(
-            format: "poemId = \(poem.id)"
+    private func checkForExistingVerse(poemId: Int32, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) -> Bool {
+        let fetchRequest = VerseEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "poemId = \(poemId)"
         )
         
-        verseRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \VerseEntity.vOrder, ascending: true)
-        ]
-        return verseRequest
+        if let results = try? context.fetch(fetchRequest), results.first != nil {
+            return true
+        }
+        return false
     }
     
-    func getPoemFetchRequest(id: Int32) -> NSFetchRequest<PoemEntity> {
-        let poemRequest: NSFetchRequest<PoemEntity> = PoemEntity.fetchRequest()
-        poemRequest.predicate = NSPredicate(
-            format: "id = \(id)"
-        )
-        
-        poemRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \PoemEntity.id, ascending: true)
-        ]
-        return poemRequest
-    }
-    
-    func toggleFavorite() {
+    func toggleFavorite(poem: PoemEntity) {
         Task {
             do {
                 poem.isFavorite.toggle()

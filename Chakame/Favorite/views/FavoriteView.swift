@@ -20,13 +20,13 @@ struct FavoriteView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(poems) { poem in
+                ForEach(poems.indices, id: \.self) { index in
+                    let title = ((poems[index].fullTitle?.isEmpty) != nil) ? poems[index].fullTitle : poems[index].title ?? ""
                     NavigationLink(
-                        poem.fullTitle ?? "",
-                        destination: poemDestinationView(poem: poem)
+                        title ?? "",
+                        destination: poemDestinationView(index: index)
                     )
                 }
-                
             }
             .font(.customBody)
             .environment(\.layoutDirection, .rightToLeft)
@@ -35,14 +35,9 @@ struct FavoriteView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 
-    func poemDestinationView(poem: PoemEntity) -> some View {
-        PoemView(
-            viewModel: PoemViewModel(
-                poem: poem,
-                poemFetcher: FetchPoemService(requestManager: RequestManager.shared),
-                poemStore: PoemStoreService(context: PersistenceController.shared.container.newBackgroundContext()))
-            )
-        .navigationTitle(poem.title ?? "")
+    func poemDestinationView(index: Int) -> some View {
+        PagePoemView(currentIndex: index, poems: Array(poems))
+            .environmentObject(PoemViewModel())
     }
 }
 

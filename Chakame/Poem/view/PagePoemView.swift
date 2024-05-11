@@ -10,24 +10,11 @@ import SwiftUI
 struct PagePoemView: View {
     @State var currentIndex: Int
     var poems: [PoemEntity]
+    @EnvironmentObject var viewModel: PoemViewModel
     
     var body: some View {
         ZStack {
-            TabView(
-                selection: $currentIndex) {
-                    ForEach(poems.indices, id: \.self) { index in
-                        PoemView(
-                            viewModel: PoemViewModel(
-                                poem: poems[index],
-                                poemFetcher: FetchPoemService(requestManager: RequestManager.shared),
-                                poemStore: PoemStoreService(context: PersistenceController.shared.container.newBackgroundContext()))
-                        )
-                        .tag(index)
-                        .gesture(DragGesture()) // prevent changing tab by tabview gesture
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            VersesView(poemId: poems[currentIndex].id)
                 .navigationTitle(poems[currentIndex].title ?? "")
         }
         .overlay(alignment: .bottom) {
@@ -36,6 +23,7 @@ struct PagePoemView: View {
                 Button(action: {
                     if currentIndex > 0 {
                         currentIndex -= 1
+                        viewModel.fetchVerses(poem: poems[currentIndex])
                     }
                 }, label: {
                     Image(systemName: "chevron.left.circle.fill")
@@ -51,6 +39,7 @@ struct PagePoemView: View {
                 Button(action: {
                     if currentIndex < poems.count - 1 {
                         currentIndex += 1
+                        viewModel.fetchVerses(poem: poems[currentIndex])
                     }
                 }, label: {
                     Image(systemName: "chevron.right.circle.fill")
@@ -62,12 +51,29 @@ struct PagePoemView: View {
             }
             
         }
+        .task {
+            viewModel.fetchVerses(poem: poems[currentIndex])
+        }
+        .toolbar {
+            Button {
+                viewModel.toggleFavorite(poem: poems[currentIndex])
+            } label: {
+                Image(systemName: poems[currentIndex].isFavorite ? "heart.fill" : "heart")
+            }
+        }
     }
 }
 
 #Preview {
     if let poems = CoreDataHelper.getTestPoems() {
-        PagePoemView(currentIndex: 1, poems: poems)
+        PagePoemView(currentIndex: 1,
+                     poems: poems
+        )
+        .environmentObject(
+            PoemViewModel(
+                poemFetcher: PoemFetcherMock(),
+                poemStore: PoemStoreService(context: CoreDataHelper.previewContext))
+        )
     } else {
         EmptyView()
     }

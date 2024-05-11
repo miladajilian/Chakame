@@ -44,7 +44,7 @@
 		11A5D4032B6D6BA800DB6CFE /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4022B6D6BA800DB6CFE /* Category+CoreData.swift */; };
 		11A5D4052B6D95A600DB6CFE /* Poem+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4042B6D95A600DB6CFE /* Poem+CoreData.swift */; };
 		11A5D40A2B8160DD00DB6CFE /* CategoryRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4092B8160DD00DB6CFE /* CategoryRequestMock.swift */; };
-		11A5D4102B816EE700DB6CFE /* PoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D40F2B816EE700DB6CFE /* PoemView.swift */; };
+		11A5D4102B816EE700DB6CFE /* VersesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D40F2B816EE700DB6CFE /* VersesView.swift */; };
 		11A5D4122B8177A200DB6CFE /* FetchPoemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4112B8177A200DB6CFE /* FetchPoemService.swift */; };
 		11A5D4152B8177F200DB6CFE /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4142B8177F200DB6CFE /* Verse.swift */; };
 		11A5D4172B81786200DB6CFE /* PoemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5D4162B81786200DB6CFE /* PoemViewModel.swift */; };
@@ -151,7 +151,7 @@
 		11A5D4022B6D6BA800DB6CFE /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
 		11A5D4042B6D95A600DB6CFE /* Poem+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Poem+CoreData.swift"; sourceTree = "<group>"; };
 		11A5D4092B8160DD00DB6CFE /* CategoryRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequestMock.swift; sourceTree = "<group>"; };
-		11A5D40F2B816EE700DB6CFE /* PoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemView.swift; sourceTree = "<group>"; };
+		11A5D40F2B816EE700DB6CFE /* VersesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersesView.swift; sourceTree = "<group>"; };
 		11A5D4112B8177A200DB6CFE /* FetchPoemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPoemService.swift; sourceTree = "<group>"; };
 		11A5D4142B8177F200DB6CFE /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
 		11A5D4162B81786200DB6CFE /* PoemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemViewModel.swift; sourceTree = "<group>"; };
@@ -490,7 +490,7 @@
 		11A5D40C2B816E7100DB6CFE /* view */ = {
 			isa = PBXGroup;
 			children = (
-				11A5D40F2B816EE700DB6CFE /* PoemView.swift */,
+				11A5D40F2B816EE700DB6CFE /* VersesView.swift */,
 				1131B6082BC86F9000605B50 /* PagePoemView.swift */,
 			);
 			path = view;
@@ -834,7 +834,7 @@
 				11E702532B614A7000171B70 /* RequestType.swift in Sources */,
 				11E702662B6160AA00171B70 /* CenturiesView.swift in Sources */,
 				11A5D4052B6D95A600DB6CFE /* Poem+CoreData.swift in Sources */,
-				11A5D4102B816EE700DB6CFE /* PoemView.swift in Sources */,
+				11A5D4102B816EE700DB6CFE /* VersesView.swift in Sources */,
 				11A5D39C2B618DDD00DB6CFE /* Persistence.swift in Sources */,
 				11A5D3B32B61BDE200DB6CFE /* Century+CoreData.swift in Sources */,
 				11A5D39A2B61848E00DB6CFE /* Chakame.xcdatamodeld in Sources */,

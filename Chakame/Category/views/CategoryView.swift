@@ -11,7 +11,7 @@ struct CategoryView: View {
     @ObservedObject var viewModel: CategoryViewModel
     @FetchRequest var categories: FetchedResults<CategoryEntity>
     @FetchRequest var poems: FetchedResults<PoemEntity>
-    
+    let parentCatId: Int
     var body: some View {
         List {
             ForEach(categories) { category in
@@ -35,35 +35,35 @@ struct CategoryView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .task {
             if categories.isEmpty && poems.isEmpty {
-                await viewModel.fetchCategories()
+                await viewModel.fetchCategories(parentCatId: parentCatId)
             }
         }
     }
     
     func categoryDestinationView(category: CategoryEntity) -> some View {
         CategoryView(
-            viewModel: CategoryViewModel(
-                parentCatId: Int(category.id),
-                categoriesFetcher: viewModel.categoriesFetcher,
-                categoryStore: viewModel.categoryStore)
-            )
+            viewModel: viewModel,
+            parentCatId: Int(category.id)
+        )
         .navigationTitle(category.title ?? "")
     }
     
     func poemDestinationView(index: Int) -> some View {
         PagePoemView(currentIndex: index, poems: Array(poems))
+            .environmentObject(viewModel.poemViewModel)
     }
 }
 
 extension CategoryView {
-    init(viewModel: CategoryViewModel) {
+    init(viewModel: CategoryViewModel, parentCatId: Int) {
         self.viewModel = viewModel
+        self.parentCatId = parentCatId
         
         _categories = FetchRequest(
-            fetchRequest: viewModel.getCategoryFetchRequest()
+            fetchRequest: viewModel.getCategoryFetchRequest(parentCatId: parentCatId)
         )
         _poems = FetchRequest(
-            fetchRequest: viewModel.getPoemFetchRequest()
+            fetchRequest: viewModel.getPoemFetchRequest(parentCatId: parentCatId)
         )
     }
 }
@@ -71,9 +71,10 @@ extension CategoryView {
 #Preview {
     CategoryView(
         viewModel: CategoryViewModel(
-            parentCatId: 32,
             categoriesFetcher: CategoriesFetcherMock(),
-            categoryStore: CategoryStoreService(context: CoreDataHelper.previewContext)))
+            categoryStore: CategoryStoreService(context: CoreDataHelper.previewContext)),
+        parentCatId: 32
+    )
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
 

@@ -11,12 +11,7 @@ struct ContentView: View {
     let managedObjectContext = PersistenceController.shared.container.viewContext
     var body: some View {
         TabView {
-            CenturiesView(
-                viewModel: CenturyViewModel(
-                    centuryFetcher: FetchCenturiesService(requestManager: RequestManager.shared),
-                    centuryStore: CenturyStoreService(context: PersistenceController.shared.container.newBackgroundContext())
-                )
-            )
+            CenturiesView()
             .tabItem {
                 Label("Home", systemImage: "list.bullet")
             }

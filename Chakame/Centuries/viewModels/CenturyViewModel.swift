@@ -21,10 +21,12 @@ final class CenturyViewModel: ObservableObject {
     private let centuryFetcher: CenturiesFetcher
     private let centuryStore: CenturyStore
     
+    let categoryViewModel = CategoryViewModel()
+    
     init(
         isLoading: Bool = true,
-        centuryFetcher: CenturiesFetcher,
-        centuryStore: CenturyStore
+        centuryFetcher: CenturiesFetcher = FetchCenturiesService(requestManager: RequestManager.shared),
+        centuryStore: CenturyStore = CenturyStoreService(context: PersistenceController.shared.container.newBackgroundContext())
     ) {
         self.isLoading = isLoading
         self.centuryFetcher = centuryFetcher

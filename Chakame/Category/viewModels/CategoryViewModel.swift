@@ -20,28 +20,24 @@ protocol CategoriesFetcher {
 @MainActor
 final class CategoryViewModel: ObservableObject {
     @Published var isLoading: Bool
-    @Published var categories: [CategoryEntity] = []
-    @Published var poems: [PoemEntity] = []
-    
-    let parentCatId: Int
     
     private(set) var categoriesFetcher: CategoriesFetcher
     private(set) var categoryStore: CategoryStore
     
+    let poemViewModel: PoemViewModel = PoemViewModel()
+    
     init(
         isLoading: Bool  = false,
-        parentCatId: Int,
-        categoriesFetcher: CategoriesFetcher,
-        categoryStore: CategoryStore
+        categoriesFetcher: CategoriesFetcher = FetchCategoriesService(requestManager: RequestManager.shared),
+        categoryStore: CategoryStore = CategoryStoreService(context: PersistenceController.shared.container.viewContext)
     ) {
         self.isLoading = isLoading
-        self.parentCatId = parentCatId
         self.categoriesFetcher = categoriesFetcher
-        self.categoryStore = categoryStore
+        self.categoryStore = categoryStore        
     }
     
     
-    @MainActor func fetchCategories() async {
+    @MainActor func fetchCategories(parentCatId: Int) async {
         guard isLoading == false else { return }
         
         isLoading = true
@@ -60,7 +56,7 @@ final class CategoryViewModel: ObservableObject {
         }
     }
 
-    func getCategoryFetchRequest() -> NSFetchRequest<CategoryEntity> {
+    func getCategoryFetchRequest(parentCatId: Int) -> NSFetchRequest<CategoryEntity> {
         let categoryRequest: NSFetchRequest<CategoryEntity> = CategoryEntity.fetchRequest()
         categoryRequest.predicate = NSPredicate(
             format: "parentId = \(parentCatId)"
@@ -71,7 +67,7 @@ final class CategoryViewModel: ObservableObject {
         ]
         return categoryRequest
     }
-    func getPoemFetchRequest() -> NSFetchRequest<PoemEntity> {
+    func getPoemFetchRequest(parentCatId: Int) -> NSFetchRequest<PoemEntity> {
         let poemsRequest: NSFetchRequest<PoemEntity> = PoemEntity.fetchRequest()
         poemsRequest.predicate = NSPredicate(
             format: "parentId = \(parentCatId)"

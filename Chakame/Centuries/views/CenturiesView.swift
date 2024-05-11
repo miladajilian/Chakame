@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CenturiesView: View {
-    @ObservedObject var viewModel: CenturyViewModel
+    @ObservedObject var viewModel = CenturyViewModel()
     @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(keyPath: \CenturyEntity.id, ascending: true)
@@ -70,11 +70,9 @@ struct CenturiesView: View {
     
     func destinationView(poet: PoetEntity) -> some View {
         CategoryView(
-            viewModel: CategoryViewModel(
-                parentCatId: Int(poet.rootCatId),
-                categoriesFetcher: FetchCategoriesService(requestManager: RequestManager.shared),
-                categoryStore: CategoryStoreService(context: PersistenceController.shared.container.viewContext)
-            ))
+            viewModel: self.viewModel.categoryViewModel,
+            parentCatId: Int(poet.rootCatId)
+        )
         .navigationTitle(poet.nickname ?? "")
     }
     
