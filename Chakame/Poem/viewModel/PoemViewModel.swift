@@ -24,11 +24,11 @@ protocol PoemFetcher {
 final class PoemViewModel: ObservableObject {
     @Published var isLoading: Bool
     @Published var isFavorite: Bool = false
-    
+
     private var poemFetcher: PoemFetcher
     private var verseStore: VerseStore = VerseStoreService()
     private var poemStore: PoemStore
-    
+
     init(
         isLoading: Bool  = false,
         poemFetcher: PoemFetcher = FetchPoemService(requestManager: RequestManager.shared),
@@ -38,9 +38,8 @@ final class PoemViewModel: ObservableObject {
         self.poemFetcher = poemFetcher
         self.poemStore = poemStore
     }
-    
+
     func fetchVerses(poem: PoemEntity) {
-        
         Task {
             await self.fetchVerses(poemId: poem.id)
         }
@@ -56,28 +55,32 @@ final class PoemViewModel: ObservableObject {
                 verses: poem.verses ?? [],
                 poemId: poemId
             )
-            
+
             try await poemStore.update(poem: poem)
-            
+
             self.isLoading = false
         } catch {
             print("Error storing verses ... \(error.localizedDescription)")
             self.isLoading = false
         }
     }
-    
-    private func checkForExistingVerse(poemId: Int32, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) -> Bool {
+
+    private func checkForExistingVerse
+    (
+        poemId: Int32,
+        context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
+    ) -> Bool {
         let fetchRequest = VerseEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(
             format: "poemId = \(poemId)"
         )
-        
+
         if let results = try? context.fetch(fetchRequest), results.first != nil {
             return true
         }
         return false
     }
-    
+
     func toggleFavorite(poem: PoemEntity) {
         Task {
             do {

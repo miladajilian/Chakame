@@ -8,7 +8,7 @@
 import Foundation
 struct FetchCategoriesService {
     private let requestManager: RequestManagerProtocol
-    
+
     init(requestManager: RequestManagerProtocol) {
         self.requestManager = requestManager
     }
@@ -25,5 +25,4 @@ extension FetchCategoriesService: CategoriesFetcher {
             return CategoryContainer(categories: [], poems: [])
         }
     }
-    
 }

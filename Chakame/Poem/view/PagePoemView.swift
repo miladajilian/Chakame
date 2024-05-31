@@ -11,7 +11,7 @@ struct PagePoemView: View {
     @State var currentIndex: Int
     var poems: [PoemEntity]
     @EnvironmentObject var viewModel: PoemViewModel
-    
+
     var body: some View {
         ZStack {
             VersesView(poemId: poems[currentIndex].id)
@@ -32,9 +32,9 @@ struct PagePoemView: View {
                 })
                 .disabled(currentIndex == 0)
                 .padding()
-                
+
                 Spacer() // Add spacing between buttons
-                
+
                 // Next Button
                 Button(action: {
                     if currentIndex < poems.count - 1 {
@@ -49,7 +49,6 @@ struct PagePoemView: View {
                 .disabled(currentIndex == poems.count - 1)
                 .padding()
             }
-            
         }
         .task {
             viewModel.fetchVerses(poem: poems[currentIndex])

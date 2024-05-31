@@ -8,7 +8,7 @@
 import Foundation
 struct FetchPoemService {
     private let requestManager: RequestManagerProtocol
-    
+
     init(requestManager: RequestManagerProtocol) {
         self.requestManager = requestManager
     }
@@ -25,7 +25,7 @@ extension FetchPoemService: PoemFetcher {
             return []
         }
     }
-    
+
     func fetchPoem(poemId: Int32) async -> Poem? {
         let requestData = ChakameRequest.getPoem(poemId: "\(poemId)")
         do {
@@ -36,5 +36,4 @@ extension FetchPoemService: PoemFetcher {
             return nil
         }
     }
-    
 }

@@ -1,0 +1,4 @@
+excluded:
+    - ChakameTests
+    - ChakameUITests
+line_length: 140

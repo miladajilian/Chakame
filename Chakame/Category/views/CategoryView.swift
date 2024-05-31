@@ -39,7 +39,7 @@ struct CategoryView: View {
             }
         }
     }
-    
+
     func categoryDestinationView(category: CategoryEntity) -> some View {
         CategoryView(
             viewModel: viewModel,
@@ -47,7 +47,7 @@ struct CategoryView: View {
         )
         .navigationTitle(category.title ?? "")
     }
-    
+
     func poemDestinationView(index: Int) -> some View {
         PagePoemView(currentIndex: index, poems: Array(poems))
             .environmentObject(viewModel.poemViewModel)
@@ -58,7 +58,7 @@ extension CategoryView {
     init(viewModel: CategoryViewModel, parentCatId: Int) {
         self.viewModel = viewModel
         self.parentCatId = parentCatId
-        
+
         _categories = FetchRequest(
             fetchRequest: viewModel.getCategoryFetchRequest(parentCatId: parentCatId)
         )
@@ -77,5 +77,3 @@ extension CategoryView {
     )
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
-
-

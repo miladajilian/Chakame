@@ -9,7 +9,6 @@ import CoreData
 
 // MARK: - UUIDIdentifiable
 extension Poet: UUIDIdentifiable {
-    
     init(managedObject: PoetEntity) {
         self.name = managedObject.name
         self.id = Int(managedObject.id)
@@ -32,7 +31,11 @@ extension Poet: UUIDIdentifiable {
         self.deathPlaceLongitude = managedObject.deathPlaceLongitude
     }
 
-  private func checkForExistingPoet(id: Int, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) -> PoetEntity? {
+  private func checkForExistingPoet
+    (
+        id: Int,
+        context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
+    ) -> PoetEntity? {
     let fetchRequest = PoetEntity.fetchRequest()
     fetchRequest.predicate = NSPredicate(format: "id = %d", id)
 
@@ -41,35 +44,36 @@ extension Poet: UUIDIdentifiable {
     }
     return nil
   }
-
-  mutating func toManagedObject(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) -> PoetEntity {
-//      guard let id = self.id else {
-//          return nil
-//      }
-      if let poet =  checkForExistingPoet(id: id, context: context) {
-          return poet
-      }
-      let persistedValue = PoetEntity.init(context: context)
-      persistedValue.name = self.name
-      persistedValue.id = Int32(id)
-      persistedValue.des = self.description
-      persistedValue.fullUrl = self.fullUrl
-      persistedValue.rootCatId = Int32(self.rootCatId ?? 0)
-      persistedValue.nickname = self.nickname
-      persistedValue.published = self.published ?? false
-      persistedValue.imageUrl = self.imageUrl
-      persistedValue.birthYearInLHijri = self.birthYearInLHijri ?? 0
-      persistedValue.validBirthDate = self.validBirthDate ?? false
-      persistedValue.deathYearInLHijri = self.deathYearInLHijri ?? 0
-      persistedValue.validDeathDate = self.validDeathDate ?? false
-      persistedValue.pinOrder = self.pinOrder ?? 0
-      persistedValue.birthPlace = self.birthPlace
-      persistedValue.birthPlaceLatitude = self.birthPlaceLatitude ?? 0
-      persistedValue.birthPlaceLongitude = self.birthPlaceLongitude ?? 0
-      persistedValue.deathPlace = self.deathPlace
-      persistedValue.deathPlaceLatitude = self.deathPlaceLatitude ?? 0
-      persistedValue.deathPlaceLongitude = self.deathPlaceLongitude ?? 0
-      
-      return persistedValue
-  }
+  mutating func toManagedObject
+    (
+        context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
+    ) -> PoetEntity {
+        //      guard let id = self.id else {
+        //          return nil
+        //      }
+        if let poet =  checkForExistingPoet(id: id, context: context) {
+            return poet
+        }
+        let persistedValue = PoetEntity.init(context: context)
+        persistedValue.name = self.name
+        persistedValue.id = Int32(id)
+        persistedValue.des = self.description
+        persistedValue.fullUrl = self.fullUrl
+        persistedValue.rootCatId = Int32(self.rootCatId ?? 0)
+        persistedValue.nickname = self.nickname
+        persistedValue.published = self.published ?? false
+        persistedValue.imageUrl = self.imageUrl
+        persistedValue.birthYearInLHijri = self.birthYearInLHijri ?? 0
+        persistedValue.validBirthDate = self.validBirthDate ?? false
+        persistedValue.deathYearInLHijri = self.deathYearInLHijri ?? 0
+        persistedValue.validDeathDate = self.validDeathDate ?? false
+        persistedValue.pinOrder = self.pinOrder ?? 0
+        persistedValue.birthPlace = self.birthPlace
+        persistedValue.birthPlaceLatitude = self.birthPlaceLatitude ?? 0
+        persistedValue.birthPlaceLongitude = self.birthPlaceLongitude ?? 0
+        persistedValue.deathPlace = self.deathPlace
+        persistedValue.deathPlaceLatitude = self.deathPlaceLatitude ?? 0
+        persistedValue.deathPlaceLongitude = self.deathPlaceLongitude ?? 0
+        return persistedValue
+    }
 }

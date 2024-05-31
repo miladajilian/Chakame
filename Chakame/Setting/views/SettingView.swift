@@ -16,7 +16,6 @@ struct SettingView: View {
             Image("chakame")
                 .resizable()
                 .frame(width: 70, height: 70)
-            
             Text("Chakame")
                 .font(.customTitle3)
             Text("AboutUsText")
@@ -26,7 +25,6 @@ struct SettingView: View {
                 Text("version")
             }
             .font(.customcaption1)
-            
         }
         .font(.customBody)
     }

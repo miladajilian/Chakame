@@ -9,7 +9,7 @@ import Foundation
 
 struct VerseContainer: Decodable {
     let verses: [Verse]
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         verses = try container.decode([Verse].self)

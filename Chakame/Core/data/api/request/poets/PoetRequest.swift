@@ -13,8 +13,7 @@ enum ChakameRequest: RequestProtocol {
     case getCategories(parentId: String)
     case getVerses(poemId: String)
     case getPoem(poemId: String)
-    
-    var path: String{
+    var path: String {
         switch self {
         case .getCenturies:
             "/api/ganjoor/centuries"
@@ -28,11 +27,11 @@ enum ChakameRequest: RequestProtocol {
             "/api/ganjoor/poem/\(poemId)"
         }
     }
-    
+
     var addAuthorizationToken: Bool {
         false
     }
-    
+
     var requestType: RequestType {
         .GET
     }

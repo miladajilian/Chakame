@@ -12,25 +12,24 @@ import XCTest
 final class CenturyViewModelTestCase: XCTestCase {
     let testContext = PersistenceController.preview.container.viewContext
     var viewModel: CenturyViewModel!
-    
+
     @MainActor
     override func setUp() {
         super.setUp()
-        
+
         viewModel =  CenturyViewModel(
             isLoading: true,
             centuryFetcher: CenturiesFetcherMock(),
             centuryStore: CenturyStoreService(context: testContext)
         )
-        
     }
-    
+
     func testFetchCenturiesLoadingState() async {
         XCTAssertTrue(viewModel.isLoading, "the view model should be loading, but  it isn't")
         await viewModel.fetchCenturies()
         XCTAssertFalse(viewModel.isLoading, "The View model shouldn't be loading, but it is")
     }
-    
+
     func  testGetCenturyTitle() {
         let fetchRequest = CenturyEntity.fetchRequest()
         fetchRequest.fetchLimit = 1

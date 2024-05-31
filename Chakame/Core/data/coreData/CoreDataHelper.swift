@@ -57,16 +57,16 @@ extension CoreDataHelper {
         }
         return nil
     }
-    
+
     static func getTestCenturies() -> [Century]? {
         let fetchRequest = CenturyEntity.fetchRequest()
-        
+
         if let results = try? previewContext.fetch(fetchRequest), !results.isEmpty {
             return results.map(Century.init(managedObject:))
         }
         return nil
     }
-    
+
     static func getTestCenturyEntity() -> CenturyEntity? {
         let fetchRequest = CenturyEntity.fetchRequest()
         fetchRequest.fetchLimit = 1
@@ -74,14 +74,14 @@ extension CoreDataHelper {
               let first = results.first else { return nil }
         return first
     }
-    
+
     static func getTestCenturyEntities() -> [CenturyEntity]? {
         let fetchRequest = CenturyEntity.fetchRequest()
         guard let results = try? previewContext.fetch(fetchRequest),
               !results.isEmpty else { return nil }
         return results
     }
-    
+
     static func getTestPoetEntity() -> PoetEntity? {
         let fetchRequest = PoetEntity.fetchRequest()
         fetchRequest.fetchLimit = 1
@@ -89,7 +89,7 @@ extension CoreDataHelper {
               let first = results.first else { return nil }
         return first
     }
-    
+
     static func getTestPoem() -> PoemEntity? {
         let fetchRequest = PoemEntity.fetchRequest()
         fetchRequest.fetchLimit = 1
@@ -97,7 +97,7 @@ extension CoreDataHelper {
               let first = results.first else { return nil }
         return first
     }
-    
+
     static func getTestPoems() -> [PoemEntity]? {
         let fetchRequest = PoemEntity.fetchRequest()
         guard let results = try? previewContext.fetch(fetchRequest) else { return nil }

@@ -10,11 +10,11 @@ import Foundation
 
 enum CategoryRequestMock: RequestProtocol {
     case getCategories
-    
+
     var requestType: RequestType {
         return .GET
     }
-    
+
     var path: String {
         switch self {
         case .getCategories:

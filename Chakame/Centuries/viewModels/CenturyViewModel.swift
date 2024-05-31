@@ -20,19 +20,20 @@ final class CenturyViewModel: ObservableObject {
     @Published var isLoading: Bool
     private let centuryFetcher: CenturiesFetcher
     private let centuryStore: CenturyStore
-    
+
     let categoryViewModel = CategoryViewModel()
-    
+
     init(
         isLoading: Bool = true,
         centuryFetcher: CenturiesFetcher = FetchCenturiesService(requestManager: RequestManager.shared),
-        centuryStore: CenturyStore = CenturyStoreService(context: PersistenceController.shared.container.newBackgroundContext())
+        centuryStore: CenturyStore = CenturyStoreService(
+            context: PersistenceController.shared.container.newBackgroundContext())
     ) {
         self.isLoading = isLoading
         self.centuryFetcher = centuryFetcher
         self.centuryStore = centuryStore
     }
-    
+
     func fetchCenturies() async {
         isLoading = true
         let centuries = await centuryFetcher.fetchCenturies()
@@ -43,7 +44,7 @@ final class CenturyViewModel: ObservableObject {
         }
         self.isLoading = false
     }
-    
+
     func getCenturyTitle(century: CenturyEntity) -> String {
         guard century.id != 0 else {
             return String(localized: "Popular Poets")

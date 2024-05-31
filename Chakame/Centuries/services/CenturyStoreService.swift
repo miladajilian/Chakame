@@ -9,7 +9,7 @@ import CoreData
 
 struct CenturyStoreService {
     private let context: NSManagedObjectContext
-    
+
     init(context: NSManagedObjectContext) {
         self.context = context
     }
@@ -20,7 +20,6 @@ extension CenturyStoreService: CenturyStore {
         for var century in centuries {
             century.toManagedObject(context: context)
         }
-        
         try context.save()
     }
 }

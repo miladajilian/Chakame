@@ -40,14 +40,12 @@ extension VersesView {
         verseRequest.predicate = NSPredicate(
             format: "poemId = \(poemId)"
         )
-        
         verseRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \VerseEntity.vOrder, ascending: true)
         ]
         _verses = FetchRequest(
             fetchRequest: verseRequest
         )
-        
     }
 }
 

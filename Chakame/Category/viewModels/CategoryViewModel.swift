@@ -20,12 +20,12 @@ protocol CategoriesFetcher {
 @MainActor
 final class CategoryViewModel: ObservableObject {
     @Published var isLoading: Bool
-    
+
     private(set) var categoriesFetcher: CategoriesFetcher
     private(set) var categoryStore: CategoryStore
-    
+
     let poemViewModel: PoemViewModel = PoemViewModel()
-    
+
     init(
         isLoading: Bool  = false,
         categoriesFetcher: CategoriesFetcher = FetchCategoriesService(requestManager: RequestManager.shared),
@@ -33,13 +33,12 @@ final class CategoryViewModel: ObservableObject {
     ) {
         self.isLoading = isLoading
         self.categoriesFetcher = categoriesFetcher
-        self.categoryStore = categoryStore        
+        self.categoryStore = categoryStore
     }
-    
-    
+
     @MainActor func fetchCategories(parentCatId: Int) async {
         guard isLoading == false else { return }
-        
+
         isLoading = true
         let categoryContainer = await categoriesFetcher.fetchCategories(parentId: parentCatId)
         do {
@@ -61,7 +60,7 @@ final class CategoryViewModel: ObservableObject {
         categoryRequest.predicate = NSPredicate(
             format: "parentId = \(parentCatId)"
         )
-        
+
         categoryRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \CategoryEntity.title, ascending: true)
         ]
@@ -72,7 +71,7 @@ final class CategoryViewModel: ObservableObject {
         poemsRequest.predicate = NSPredicate(
             format: "parentId = \(parentCatId)"
         )
-        
+
         poemsRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \PoemEntity.id, ascending: true)
         ]

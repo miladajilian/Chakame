@@ -9,7 +9,7 @@ import Foundation
 
 struct CenturyContainer: Decodable {
     let centuries: [Century]
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         centuries = try container.decode([Century].self)

@@ -9,7 +9,7 @@ import CoreData
 
 struct PoemStoreService {
     private let context: NSManagedObjectContext
-    
+
     init(context: NSManagedObjectContext) {
         self.context = context
     }
@@ -19,7 +19,6 @@ extension PoemStoreService: PoemStore {
     func update(poem: Poem) async throws {
         var poemObject = poem
         _ = poemObject.toManagedObject()
-                
         try context.save()
     }
 }

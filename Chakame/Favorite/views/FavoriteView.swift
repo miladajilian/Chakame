@@ -16,14 +16,16 @@ struct FavoriteView: View {
         animation: .default
     )
     var poems: FetchedResults<PoemEntity>
-    
+
     var body: some View {
         NavigationView {
             List {
                 ForEach(poems.indices, id: \.self) { index in
-                    let title = ((poems[index].fullTitle?.isEmpty) != nil) ? poems[index].fullTitle : poems[index].title ?? ""
+                    let poemFullTitle = poems[index].fullTitle ?? ""
+                    let poemTitle = poems[index].title ?? ""
+                    let title = poemFullTitle.isEmpty ? poemTitle : poemFullTitle
                     NavigationLink(
-                        title ?? "",
+                        title,
                         destination: poemDestinationView(index: index)
                     )
                 }

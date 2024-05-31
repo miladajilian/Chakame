@@ -25,7 +25,7 @@ struct PoetRow: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: 50, height: 50)
             .cornerRadius(8)
-            
+
             VStack(alignment: .leading) {
                 Text(poet?.nickname ?? "")
                     .multilineTextAlignment(.center)

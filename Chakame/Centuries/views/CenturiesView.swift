@@ -16,16 +16,16 @@ struct CenturiesView: View {
         animation: .default
     )
     var centuries: FetchedResults<CenturyEntity>
-    
+
     @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(keyPath: \PoetEntity.name, ascending: true)
         ], animation: .default
     )
     var poets: FetchedResults<PoetEntity>
-    
+
     @State private var searchText = ""
-    
+
     var body: some View {
         NavigationView {
             List {
@@ -67,7 +67,7 @@ struct CenturiesView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
+
     func destinationView(poet: PoetEntity) -> some View {
         CategoryView(
             viewModel: self.viewModel.categoryViewModel,
@@ -75,7 +75,7 @@ struct CenturiesView: View {
         )
         .navigationTitle(poet.nickname ?? "")
     }
-    
+
     private func searchByName() {
         let predicate: NSPredicate?
         if !searchText.isEmpty {

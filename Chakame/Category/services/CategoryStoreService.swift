@@ -9,7 +9,7 @@ import CoreData
 
 struct CategoryStoreService {
     private let context: NSManagedObjectContext
-    
+
     init(context: NSManagedObjectContext) {
         self.context = context
     }
@@ -26,12 +26,11 @@ extension CategoryStoreService: CategoryStore {
             do {
                 try context.save()
             } catch {
-                
+                print("Error storing category ... \(error.localizedDescription)")
             }
         }
-        
     }
-    
+
     func save(poems: [Poem]) async throws {
         await PersistenceController.shared.container.performBackgroundTask { context in
             for var poem in poems {
@@ -40,7 +39,7 @@ extension CategoryStoreService: CategoryStore {
             do {
                 try context.save()
             } catch {
-                
+                print("Error storing poem ... \(error.localizedDescription)")
             }
         }
     }

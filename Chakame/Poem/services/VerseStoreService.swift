@@ -7,9 +7,7 @@
 
 import CoreData
 
-struct VerseStoreService {
-    
-}
+struct VerseStoreService {}
 
 extension VerseStoreService: VerseStore {
     func save(verses: [Verse], poemId: Int32) async throws {
@@ -22,9 +20,8 @@ extension VerseStoreService: VerseStore {
             do {
                 try context.save()
             } catch {
-                
+                print("Error storing verse ... \(error.localizedDescription)")
             }
         }
-        
     }
 }

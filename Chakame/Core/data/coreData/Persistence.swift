@@ -12,8 +12,8 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<3 {
-            var century = Century.mock[i]
+        for centuryIndex in 0..<3 {
+            var century = Century.mock[centuryIndex]
             century.toManagedObject(context: viewContext)
         }
         var poem = Poem.mock

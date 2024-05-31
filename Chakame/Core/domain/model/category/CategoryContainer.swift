@@ -10,11 +10,11 @@ import Foundation
 struct CategoryContainer: Decodable {
     var categories: [Category]
     var poems: [Poem]
-    
+
     enum CodingKeys: String, CodingKey {
         case cat
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let cat = try container.decode(Category.self, forKey: .cat)
@@ -33,13 +33,9 @@ struct CategoryContainer: Decodable {
             self.poems = poems
         }
     }
-    
+
     init(categories: [Category], poems: [Poem]) {
         self.categories = categories
         self.poems = poems
     }
-    
-//    struct CategoryResponse: Decodable {
-//        let cat: Category
-//    }
 }
