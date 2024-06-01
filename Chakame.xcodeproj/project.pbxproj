@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111BDEC92C0BAE690061E9A7 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 111BDEC82C0BAE690061E9A7 /* NukeUI */; };
 		1131B6092BC86F9000605B50 /* PagePoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131B6082BC86F9000605B50 /* PagePoemView.swift */; };
 		116FD6E02B613FAF0015A814 /* ChakameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6DF2B613FAF0015A814 /* ChakameApp.swift */; };
 		116FD6E22B613FAF0015A814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6E12B613FAF0015A814 /* ContentView.swift */; };
@@ -193,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111BDEC92C0BAE690061E9A7 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +698,9 @@
 			dependencies = (
 			);
 			name = Chakame;
+			packageProductDependencies = (
+				111BDEC82C0BAE690061E9A7 /* NukeUI */,
+			);
 			productName = Chakame;
 			productReference = 116FD6DC2B613FAF0015A814 /* Chakame.app */;
 			productType = "com.apple.product-type.application";
@@ -768,6 +773,9 @@
 				Base,
 			);
 			mainGroup = 116FD6D32B613FAF0015A814;
+			packageReferences = (
+				111BDEC72C0BAE690061E9A7 /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 116FD6DD2B613FAF0015A814 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1232,6 +1240,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		111BDEC72C0BAE690061E9A7 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		111BDEC82C0BAE690061E9A7 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 111BDEC72C0BAE690061E9A7 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		11A5D3982B61848E00DB6CFE /* Chakame.xcdatamodeld */ = {

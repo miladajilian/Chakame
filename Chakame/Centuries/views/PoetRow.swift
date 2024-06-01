@@ -6,20 +6,20 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct PoetRow: View {
   let poet: PoetEntity?
 
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: APIConstants.url + (poet?.imageUrl ?? ""))) { image in
-                image
-                    .resizable()
-            } placeholder: {
-                if poet?.imageUrl != nil {
+            LazyImage(url: URL(string: APIConstants.url + (poet?.imageUrl ?? ""))) { state in
+                if state.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.gray.opacity(0.4))
+                } else {
+                    state.image?.resizable()
                 }
             }
             .aspectRatio(contentMode: .fit)
