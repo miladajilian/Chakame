@@ -53,7 +53,7 @@ struct CenturiesView: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search")
-            .onChange(of: searchText, { _, _ in
+            .onChange(of: searchText, perform: { _ in
                 searchByName()
             })
             .task {
