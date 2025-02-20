@@ -22,6 +22,18 @@ struct VersesView: View {
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(verse.versePosition == 0 ? Color.gray.opacity(0.5) : Color(UIColor.tertiarySystemBackground))
+                .contextMenu {
+                    Button {
+                        UIPasteboard.general.string = verse.text
+                    } label: {
+                        Label("Copy Verse", systemImage: "text.line.first.and.arrowtriangle.forward")
+                    }
+                    Button {
+                        UIPasteboard.general.string = verses.compactMap { $0.text }.joined(separator: "\n")
+                    } label: {
+                        Label("Copy all verses", systemImage: "arrow.up.and.down.text.horizontal")
+                    }
+                }
             }
             if verses.isEmpty {
                 ProgressView("Fetching verses")

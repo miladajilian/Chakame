@@ -31,6 +31,26 @@
         }
       }
     },
+    "Copy all verses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رونوشت تمام ابیات"
+          }
+        }
+      }
+    },
+    "Copy Verse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رونوشت بیت"
+          }
+        }
+      }
+    },
     "Favorite" : {
       "localizations" : {
         "en" : {
