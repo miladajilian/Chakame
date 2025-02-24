@@ -26,7 +26,7 @@ struct VersesView: View {
                     Button {
                         UIPasteboard.general.string = verse.text
                     } label: {
-                        Label("Copy Verse", systemImage: "text.line.first.and.arrowtriangle.forward")
+                        Label("Copy hemistich", systemImage: "text.line.first.and.arrowtriangle.forward")
                     }
                     Button {
                         UIPasteboard.general.string = verses.compactMap { $0.text }.joined(separator: "\n")

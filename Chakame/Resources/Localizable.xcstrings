@@ -41,12 +41,12 @@
         }
       }
     },
-    "Copy Verse" : {
+    "Copy hemistich" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "رونوشت بیت"
+            "value" : "رونوشت مصرع"
           }
         }
       }
