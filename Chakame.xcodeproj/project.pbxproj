@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		111BDEC92C0BAE690061E9A7 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 111BDEC82C0BAE690061E9A7 /* NukeUI */; };
 		1131B6092BC86F9000605B50 /* PagePoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131B6082BC86F9000605B50 /* PagePoemView.swift */; };
+		11667E512D980A050092271B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11667E502D980A050092271B /* Constants.swift */; };
 		116FD6E02B613FAF0015A814 /* ChakameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6DF2B613FAF0015A814 /* ChakameApp.swift */; };
 		116FD6E22B613FAF0015A814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FD6E12B613FAF0015A814 /* ContentView.swift */; };
 		116FD6E42B613FB10015A814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116FD6E32B613FB10015A814 /* Assets.xcassets */; };
@@ -66,7 +67,6 @@
 		11E7024C2B61470500171B70 /* CenturiesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 11E7024B2B61470500171B70 /* CenturiesMock.json */; };
 		11E702502B61499400171B70 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7024F2B61499400171B70 /* RequestProtocol.swift */; };
 		11E702532B614A7000171B70 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702522B614A7000171B70 /* RequestType.swift */; };
-		11E702552B614BAB00171B70 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702542B614BAB00171B70 /* APIConstants.swift */; };
 		11E702582B614CD300171B70 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702572B614CD300171B70 /* NetworkError.swift */; };
 		11E7025A2B6151DE00171B70 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E702592B6151DE00171B70 /* APIManager.swift */; };
 		11E7025C2B6153F100171B70 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7025B2B6153F100171B70 /* RequestManager.swift */; };
@@ -113,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		1131B6082BC86F9000605B50 /* PagePoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePoemView.swift; sourceTree = "<group>"; };
+		11667E502D980A050092271B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		116FD6DC2B613FAF0015A814 /* Chakame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chakame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		116FD6DF2B613FAF0015A814 /* ChakameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChakameApp.swift; sourceTree = "<group>"; };
 		116FD6E12B613FAF0015A814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 		11E7024B2B61470500171B70 /* CenturiesMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CenturiesMock.json; sourceTree = "<group>"; };
 		11E7024F2B61499400171B70 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		11E702522B614A7000171B70 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
-		11E702542B614BAB00171B70 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		11E702572B614CD300171B70 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		11E702592B6151DE00171B70 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		11E7025B2B6153F100171B70 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -541,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				11A5D42B2B82189400DB6CFE /* Font.swift */,
+				11667E502D980A050092271B /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -584,7 +585,6 @@
 				11E7025D2B61552200171B70 /* parser */,
 				11E702562B614CC300171B70 /* network */,
 				11E702512B614A5D00171B70 /* request */,
-				11E702542B614BAB00171B70 /* APIConstants.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -873,7 +873,6 @@
 				11A5D3FF2B6D666300DB6CFE /* CategoryFetcherMock.swift in Sources */,
 				11A5D3C22B65CC9500DB6CFE /* CenturiesFetcherMock.swift in Sources */,
 				11A5D4152B8177F200DB6CFE /* Verse.swift in Sources */,
-				11E702552B614BAB00171B70 /* APIConstants.swift in Sources */,
 				11E702502B61499400171B70 /* RequestProtocol.swift in Sources */,
 				11A5D3D72B6A8C4800DB6CFE /* CategoryMock.swift in Sources */,
 				11A5D3D52B69B64800DB6CFE /* CategoryContainer.swift in Sources */,
@@ -890,6 +889,7 @@
 				11A5D4312B82218D00DB6CFE /* PoemStoreService.swift in Sources */,
 				11A5D41F2B81816D00DB6CFE /* VerseStoreService.swift in Sources */,
 				11A5D3DA2B6A8CBE00DB6CFE /* Poem.swift in Sources */,
+				11667E512D980A050092271B /* Constants.swift in Sources */,
 				1131B6092BC86F9000605B50 /* PagePoemView.swift in Sources */,
 				11E702582B614CD300171B70 /* NetworkError.swift in Sources */,
 				11A5D4122B8177A200DB6CFE /* FetchPoemService.swift in Sources */,

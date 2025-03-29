@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "AboutUs" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "درباره"
-          }
-        }
-      }
-    },
     "AboutUsText" : {
       "localizations" : {
         "en" : {
@@ -101,6 +91,16 @@
         }
       }
     },
+    "Keep Screen Always On" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صفحه نمایش همیشه روشن"
+          }
+        }
+      }
+    },
     "Popular Poets" : {
       "localizations" : {
         "en" : {
@@ -121,12 +121,32 @@
         }
       }
     },
+    "Setting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنظیمات"
+          }
+        }
+      }
+    },
     "version" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "نسخه"
+          }
+        }
+      }
+    },
+    "When enabled, your screen will stay awake while using the app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "با روشن کردن این تنظیم، صفحه نمایش شما در زمان استفاده از برنامه روشن خواهد ماند و قفل نخواهد شد"
           }
         }
       }

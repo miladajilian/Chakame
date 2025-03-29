@@ -18,7 +18,7 @@ protocol RequestProtocol {
 
 extension RequestProtocol {
     var host: String {
-        APIConstants.host
+        Constants.API.host
     }
     var addAuthorizationToken: Bool {
         false

@@ -9,24 +9,35 @@ import SwiftUI
 
 struct SettingView: View {
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    @AppStorage(Constants.UserDefaultsKeys.alwaysOn) private var alwaysOn: Bool = false
 
     var body: some View {
-        VStack {
-            Spacer()
-            Image("chakame")
-                .resizable()
-                .frame(width: 70, height: 70)
-            Text("Chakame")
-                .font(.customTitle3)
-            Text("AboutUsText")
-            Spacer()
-            HStack(spacing: 4) {
-                Text((appVersion ?? ""))
-                Text("version")
+        NavigationView {
+            VStack {
+                Form {
+                    Section {
+                        Toggle("Keep Screen Always On", isOn: $alwaysOn)
+                            .onChange(of: alwaysOn) { newValue in
+                                UIApplication.shared.isIdleTimerDisabled = newValue
+                            }
+                        Text("When enabled, your screen will stay awake while using the app.")
+                            .font(.customcaption1)
+                            .foregroundColor(.gray)
+                    }
+                }
+                Spacer()
+                Text("AboutUsText")
+                    .font(.customcaption1)
+                HStack(spacing: 4) {
+                    Text((appVersion ?? ""))
+                    Text("version")
+                }
+                .font(.customcaption1)
             }
-            .font(.customcaption1)
+            .font(.customBody)
+            .environment(\.layoutDirection, .rightToLeft)
+            .navigationTitle("Setting")
         }
-        .font(.customBody)
     }
 }
 

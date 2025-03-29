@@ -13,7 +13,7 @@ struct PoetRow: View {
 
     var body: some View {
         HStack {
-            LazyImage(url: URL(string: APIConstants.url + (poet?.imageUrl ?? ""))) { state in
+            LazyImage(url: URL(string: Constants.API.url + (poet?.imageUrl ?? ""))) { state in
                 if state.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
