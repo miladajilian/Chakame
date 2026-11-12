@@ -1,6 +1,26 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ از %2$@"
+          }
+        }
+      }
+    },
+    "%@ poems" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ شعر"
+          }
+        }
+      }
+    },
     "AboutUsText" : {
       "localizations" : {
         "en" : {
@@ -101,12 +121,42 @@
         }
       }
     },
+    "Next poem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شعر بعدی"
+          }
+        }
+      }
+    },
+    "No favorites yet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هنوز شعری نشان نکرده‌اید"
+          }
+        }
+      }
+    },
     "Popular Poets" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "سخنوران پرمخاطب"
+          }
+        }
+      }
+    },
+    "Previous poem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شعر قبلی"
           }
         }
       }
@@ -127,6 +177,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تنظیمات"
+          }
+        }
+      }
+    },
+    "Share poem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اشتراک‌گذاری شعر"
+          }
+        }
+      }
+    },
+    "Tap the heart while reading a poem to save it here." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هنگام خواندن شعر، روی قلب بزنید تا اینجا ذخیره شود."
           }
         }
       }

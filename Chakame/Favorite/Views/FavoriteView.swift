@@ -28,8 +28,16 @@ struct FavoriteView: View {
                     )
                 }
             }
+            .overlay {
+                if poems.isEmpty {
+                    ContentUnavailableView(
+                        "No favorites yet",
+                        systemImage: "heart",
+                        description: Text("Tap the heart while reading a poem to save it here.")
+                    )
+                }
+            }
             .font(.customBody)
-            .environment(\.layoutDirection, .rightToLeft)
             .navigationTitle("Favorite")
             .navigationDestination(for: PoemRoute.self) { route in
                 PagePoemView(currentIndex: route.index, poems: route.poems)

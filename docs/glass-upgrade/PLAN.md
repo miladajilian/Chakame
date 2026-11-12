@@ -1,6 +1,6 @@
 # Liquid Glass upgrade plan — Chakame
 
-_Generated 2026-11-12. Min iOS 17.0. Latest SDK checked: iOS 27.2 (Xcode 27.2). Status: APPROVED, implementing on `feature/liquid-glass`._
+_Generated 2026-11-12. Min iOS 17.0. Latest SDK checked: iOS 27.2 (Xcode 27.2). Status: IMPLEMENTED on `feature/liquid-glass` (see results below)._
 
 ## Summary
 - Screens reviewed: 8 (✅ automatic: 3 · 🔧 fixes: 4 · 🔁 restructure: 1)
@@ -42,3 +42,15 @@ See [OPPORTUNITIES.md](OPPORTUNITIES.md).
 
 ## Appendix
 [areas/](areas/) · [audit-summary.md](audit-summary.md) · [screen-inventory.csv](screen-inventory.csv) · [OPPORTUNITIES.md](OPPORTUNITIES.md) · [00-project-facts.md](00-project-facts.md)
+
+## Implementation results (2026-11-12)
+Implemented on `feature/liquid-glass`. Checked on the iPhone 17 simulator (iOS 27.2), light mode:
+- ✅ Tab bar and nav chrome are RTL (Home on the right, back chevron on the right). Search is minimized to a glass button.
+- ✅ Reader: glass bottom bar with next on the left and previous on the right, disabled at the ends. Tab bar hidden. Favorite and share grouped in one capsule. Subtitle "۱ از ۴" in Persian digits.
+- ✅ Category subtitle ("۴ شعر"), Favorites empty state, and the Settings footer inside the Form. The toggle label isn't clipped.
+- ✅ `make lint`, `make test`, `make test-ui` pass.
+
+Still unverified:
+- Dark mode: the simulator kept rendering the app in light mode after switching appearance. Check on a device.
+- iOS 17 and iOS 26.5 fallbacks: no iOS 17 runtime is installed, and iOS 26.5 wasn't run.
+- Reduce Transparency, Increase Contrast and large Dynamic Type.
