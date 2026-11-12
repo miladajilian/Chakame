@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import Observation
 
+@MainActor
 protocol CenturyStore {
     func save(centuries: [Century]) async throws
 }
@@ -15,23 +17,26 @@ protocol CenturiesFetcher {
     func fetchCenturies() async -> [Century]
 }
 
+@Observable
 @MainActor
-final class CenturyViewModel: ObservableObject {
-    @Published var isLoading: Bool
-    private let centuryFetcher: CenturiesFetcher
-    private let centuryStore: CenturyStore
+final class CenturyViewModel {
+    var isLoading: Bool
 
-    let categoryViewModel = CategoryViewModel()
+    @ObservationIgnored private let centuryFetcher: CenturiesFetcher
+    @ObservationIgnored private let centuryStore: CenturyStore
+
+    let categoryViewModel: CategoryViewModel
 
     init(
         isLoading: Bool = true,
         centuryFetcher: CenturiesFetcher = FetchCenturiesService(requestManager: RequestManager.shared),
-        centuryStore: CenturyStore = CenturyStoreService(
-            context: PersistenceController.shared.container.newBackgroundContext())
+        centuryStore: CenturyStore,
+        categoryViewModel: CategoryViewModel
     ) {
         self.isLoading = isLoading
         self.centuryFetcher = centuryFetcher
         self.centuryStore = centuryStore
+        self.categoryViewModel = categoryViewModel
     }
 
     func fetchCenturies() async {
@@ -42,13 +47,13 @@ final class CenturyViewModel: ObservableObject {
         } catch {
             print("Error storing centuries... \(error.localizedDescription)")
         }
-        self.isLoading = false
+        isLoading = false
     }
 
     func getCenturyTitle(century: CenturyEntity) -> String {
         guard century.id != 0 else {
             return String(localized: "Popular Poets")
         }
-       return century.name ?? ""
+        return century.name
     }
 }

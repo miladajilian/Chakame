@@ -5,44 +5,43 @@
 //  Created by Milad on 2024-02-19.
 //
 
+import SwiftData
 import SwiftUI
 
 struct FavoriteView: View {
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \PoemEntity.id, ascending: true)
-        ],
-        predicate: NSPredicate(format: "isFavorite = %d", true),
+    let poemViewModel: PoemViewModel
+    @Query(
+        filter: #Predicate<PoemEntity> { $0.isFavorite },
+        sort: \PoemEntity.id,
         animation: .default
     )
-    var poems: FetchedResults<PoemEntity>
+    private var poems: [PoemEntity]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(poems.indices, id: \.self) { index in
-                    let poemFullTitle = poems[index].fullTitle ?? ""
-                    let poemTitle = poems[index].title ?? ""
-                    let title = poemFullTitle.isEmpty ? poemTitle : poemFullTitle
+                    let poem = poems[index]
                     NavigationLink(
-                        title,
-                        destination: poemDestinationView(index: index)
+                        poem.fullTitle.isEmpty ? poem.title : poem.fullTitle,
+                        value: PoemRoute(poems: poems, index: index)
                     )
                 }
             }
             .font(.customBody)
             .environment(\.layoutDirection, .rightToLeft)
             .navigationTitle("Favorite")
+            .navigationDestination(for: PoemRoute.self) { route in
+                PagePoemView(currentIndex: route.index, poems: route.poems)
+                    .environment(poemViewModel)
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-
-    func poemDestinationView(index: Int) -> some View {
-        PagePoemView(currentIndex: index, poems: Array(poems))
-            .environmentObject(PoemViewModel())
     }
 }
 
 #Preview {
-    FavoriteView()
+    if let container = PreviewContainer.shared {
+        FavoriteView(poemViewModel: AppDependencies.preview(container: container).poemViewModel)
+            .modelContainer(container)
+    }
 }

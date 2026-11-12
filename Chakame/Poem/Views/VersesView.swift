@@ -1,15 +1,23 @@
 //
-//  PoemView.swift
+//  VersesView.swift
 //  Chakame
 //
 //  Created by Milad on 2024-02-17.
 //
 
+import SwiftData
 import SwiftUI
-import CoreData
 
 struct VersesView: View {
-    @FetchRequest var verses: FetchedResults<VerseEntity>
+    @Query private var verses: [VerseEntity]
+
+    init(poemId: Int) {
+        _verses = Query(
+            filter: #Predicate<VerseEntity> { $0.poemId == poemId },
+            sort: \VerseEntity.vOrder
+        )
+    }
+
     var body: some View {
         List {
             ForEach(verses) { verse in
@@ -17,7 +25,7 @@ struct VersesView: View {
                     if verse.versePosition == 1 {
                         Spacer()
                     }
-                    Text(verse.text ?? "")
+                    Text(verse.text)
                         .multilineTextAlignment(.leading)
                 }
                 .listRowSeparator(.hidden)
@@ -29,7 +37,7 @@ struct VersesView: View {
                         Label("Copy hemistich", systemImage: "text.line.first.and.arrowtriangle.forward")
                     }
                     Button {
-                        UIPasteboard.general.string = verses.compactMap { $0.text }.joined(separator: "\n")
+                        UIPasteboard.general.string = verses.map(\.text).joined(separator: "\n")
                     } label: {
                         Label("Copy all verses", systemImage: "arrow.up.and.down.text.horizontal")
                     }
@@ -42,26 +50,12 @@ struct VersesView: View {
         }
         .font(.customBody)
         .environment(\.layoutDirection, .rightToLeft)
-        .font(.customBody)
-    }
-}
-
-extension VersesView {
-    init(poemId: Int32) {
-        let verseRequest: NSFetchRequest<VerseEntity> = VerseEntity.fetchRequest()
-        verseRequest.predicate = NSPredicate(
-            format: "poemId = \(poemId)"
-        )
-        verseRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \VerseEntity.vOrder, ascending: true)
-        ]
-        _verses = FetchRequest(
-            fetchRequest: verseRequest
-        )
     }
 }
 
 #Preview {
-    VersesView(poemId: 10060)
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    if let container = PreviewContainer.shared {
+        VersesView(poemId: PreviewContainer.poemIdWithVerses)
+            .modelContainer(container)
+    }
 }

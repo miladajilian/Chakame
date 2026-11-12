@@ -8,10 +8,11 @@
 import Foundation
 
 struct PoemFetcherMock: PoemFetcher {
-    func fetchVerses(poemId: Int32) async -> [Verse] {
+    func fetchVerses(poemId: Int) async -> [Verse] {
         Verse.mock
     }
-    func fetchPoem(poemId: Int32) async -> Poem? {
+
+    func fetchPoem(poemId: Int) async -> Poem? {
         Poem.mock
     }
 }

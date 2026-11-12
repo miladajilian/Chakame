@@ -5,7 +5,7 @@ Chakame is an iOS app that provides access to a collection of Persian poems usin
 ## Features
 
 - **Ganjoor API Integration**: Accesses the Ganjoor API to retrieve a collection of Iranian poems.
-- **Core Data**: Utilizes Core Data for local data storage, allowing poems to be stored and accessed offline.
+- **SwiftData**: Utilizes SwiftData for local data storage, allowing poems to be stored and accessed offline.
 - **SwiftUI**: Built using SwiftUI for a modern and intuitive user interface.
 - **Open Source**: The project is open source, welcoming contributions from the community.
 

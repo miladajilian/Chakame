@@ -17,7 +17,7 @@ struct SettingView: View {
                 Form {
                     Section {
                         Toggle("Keep Screen Always On", isOn: $alwaysOn)
-                            .onChange(of: alwaysOn) { newValue in
+                            .onChange(of: alwaysOn) { _, newValue in
                                 UIApplication.shared.isIdleTimerDisabled = newValue
                             }
                         Text("When enabled, your screen will stay awake while using the app.")
@@ -29,7 +29,7 @@ struct SettingView: View {
                 Text("AboutUsText")
                     .font(.customcaption1)
                 HStack(spacing: 4) {
-                    Text((appVersion ?? ""))
+                    Text(appVersion ?? "")
                     Text("version")
                 }
                 .font(.customcaption1)

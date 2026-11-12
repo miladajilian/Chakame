@@ -5,23 +5,29 @@
 //  Created by Milad on 2024-02-18.
 //
 
-import CoreData
+import Foundation
+import SwiftData
 
-struct VerseStoreService {}
+@MainActor
+struct VerseStoreService {
+    private let context: ModelContext
+
+    init(context: ModelContext) {
+        self.context = context
+    }
+}
 
 extension VerseStoreService: VerseStore {
-    func save(verses: [Verse], poemId: Int32) async throws {
+    func save(verses: [Verse], poemId: Int) async throws {
         guard !verses.isEmpty else { return }
-
-        await PersistenceController.shared.container.performBackgroundTask { context in
-            for var verse in verses {
-                verse.toManagedObject(context: context, poemId: poemId)
-            }
-            do {
-                try context.save()
-            } catch {
-                print("Error storing verse ... \(error.localizedDescription)")
-            }
+        for verse in verses {
+            try verse.upsert(into: context, poemId: poemId)
         }
+        try context.save()
+    }
+
+    func hasVerses(poemId: Int) throws -> Bool {
+        let descriptor = FetchDescriptor<VerseEntity>(predicate: #Predicate { $0.poemId == poemId })
+        return try context.fetchCount(descriptor) > 0
     }
 }

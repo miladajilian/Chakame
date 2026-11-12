@@ -6,90 +6,74 @@
 //
 
 import Foundation
-import CoreData
+import Observation
 
+@MainActor
 protocol VerseStore {
-    func save(verses: [Verse], poemId: Int32) async throws
-}
-protocol PoemStore {
-    func update(poem: Poem) async throws
-}
-
-protocol PoemFetcher {
-    func fetchVerses(poemId: Int32) async -> [Verse]
-    func fetchPoem(poemId: Int32) async -> Poem?
+    func save(verses: [Verse], poemId: Int) async throws
+    func hasVerses(poemId: Int) throws -> Bool
 }
 
 @MainActor
-final class PoemViewModel: ObservableObject {
-    @Published var isLoading: Bool
-    @Published var isFavorite: Bool = false
+protocol PoemStore {
+    func update(poem: Poem) async throws
+    func toggleFavorite(_ poem: PoemEntity) throws
+}
 
-    private var poemFetcher: PoemFetcher
-    private var verseStore: VerseStore = VerseStoreService()
-    private var poemStore: PoemStore
+protocol PoemFetcher {
+    func fetchVerses(poemId: Int) async -> [Verse]
+    func fetchPoem(poemId: Int) async -> Poem?
+}
+
+@Observable
+@MainActor
+final class PoemViewModel {
+    var isLoading: Bool
+
+    @ObservationIgnored private let poemFetcher: PoemFetcher
+    @ObservationIgnored private let poemStore: PoemStore
+    @ObservationIgnored private let verseStore: VerseStore
 
     init(
-        isLoading: Bool  = false,
+        isLoading: Bool = false,
         poemFetcher: PoemFetcher = FetchPoemService(requestManager: RequestManager.shared),
-        poemStore: PoemStore = PoemStoreService(context: PersistenceController.shared.container.newBackgroundContext())
+        poemStore: PoemStore,
+        verseStore: VerseStore
     ) {
         self.isLoading = isLoading
         self.poemFetcher = poemFetcher
         self.poemStore = poemStore
+        self.verseStore = verseStore
     }
 
     func fetchVerses(poem: PoemEntity) {
+        let poemId = poem.id
         Task {
-            await self.fetchVerses(poemId: poem.id)
+            await fetchVerses(poemId: poemId)
         }
     }
-    private func fetchVerses(poemId: Int32) async {
-        guard !checkForExistingVerse(poemId: poemId) else { return }
+
+    /// Downloads and stores a poem's verses, unless they're already stored.
+    func fetchVerses(poemId: Int) async {
+        let alreadyStored = (try? verseStore.hasVerses(poemId: poemId)) ?? false
+        guard !alreadyStored else { return }
+
         isLoading = true
-        guard let poem = await poemFetcher.fetchPoem(poemId: poemId) else {
-            return
-        }
+        defer { isLoading = false }
+        guard let poem = await poemFetcher.fetchPoem(poemId: poemId) else { return }
         do {
-            try await verseStore.save(
-                verses: poem.verses ?? [],
-                poemId: poemId
-            )
-
+            try await verseStore.save(verses: poem.verses ?? [], poemId: poemId)
             try await poemStore.update(poem: poem)
-
-            self.isLoading = false
         } catch {
             print("Error storing verses ... \(error.localizedDescription)")
-            self.isLoading = false
         }
-    }
-
-    private func checkForExistingVerse
-    (
-        poemId: Int32,
-        context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
-    ) -> Bool {
-        let fetchRequest = VerseEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(
-            format: "poemId = \(poemId)"
-        )
-
-        if let results = try? context.fetch(fetchRequest), results.first != nil {
-            return true
-        }
-        return false
     }
 
     func toggleFavorite(poem: PoemEntity) {
-        Task {
-            do {
-                poem.isFavorite.toggle()
-                self.isFavorite.toggle()
-                try poem.managedObjectContext?.save()
-            } catch {
-                print("Error updating poem isFavotite ... \(error.localizedDescription)")
-            }
+        do {
+            try poemStore.toggleFavorite(poem)
+        } catch {
+            print("Error updating poem isFavorite ... \(error.localizedDescription)")
         }
     }
 }

@@ -131,6 +131,16 @@
         }
       }
     },
+    "Unable to open the library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "باز کردن کتابخانه ممکن نشد"
+          }
+        }
+      }
+    },
     "version" : {
       "localizations" : {
         "en" : {
