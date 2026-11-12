@@ -29,7 +29,11 @@ struct VersesView: View {
                         .multilineTextAlignment(.leading)
                 }
                 .listRowSeparator(.hidden)
-                .listRowBackground(verse.versePosition == 0 ? Color.gray.opacity(0.5) : Color(UIColor.tertiarySystemBackground))
+                .listRowBackground(
+                    verse.versePosition == 0
+                        ? Color(uiColor: .secondarySystemBackground)
+                        : Color(uiColor: .tertiarySystemBackground)
+                )
                 .contextMenu {
                     Button {
                         UIPasteboard.general.string = verse.text
@@ -49,7 +53,6 @@ struct VersesView: View {
             }
         }
         .font(.customBody)
-        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

@@ -12,30 +12,33 @@ struct SettingView: View {
     @AppStorage(Constants.UserDefaultsKeys.alwaysOn) private var alwaysOn: Bool = false
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section {
-                        Toggle("Keep Screen Always On", isOn: $alwaysOn)
-                            .onChange(of: alwaysOn) { _, newValue in
-                                UIApplication.shared.isIdleTimerDisabled = newValue
-                            }
-                        Text("When enabled, your screen will stay awake while using the app.")
-                            .font(.customcaption1)
-                            .foregroundColor(.gray)
+        NavigationStack {
+            Form {
+                Section {
+                    Toggle("Keep Screen Always On", isOn: $alwaysOn)
+                        .onChange(of: alwaysOn) { _, newValue in
+                            UIApplication.shared.isIdleTimerDisabled = newValue
+                        }
+                } footer: {
+                    Text("When enabled, your screen will stay awake while using the app.")
+                        .font(.customcaption1)
+                }
+
+                // Lives inside the Form so it scrolls with the content instead of
+                // sitting under the floating tab bar.
+                Section {} footer: {
+                    VStack(spacing: 4) {
+                        Text("AboutUsText")
+                        HStack(spacing: 4) {
+                            Text(appVersion ?? "")
+                            Text("version")
+                        }
                     }
-                }
-                Spacer()
-                Text("AboutUsText")
                     .font(.customcaption1)
-                HStack(spacing: 4) {
-                    Text(appVersion ?? "")
-                    Text("version")
+                    .frame(maxWidth: .infinity)
                 }
-                .font(.customcaption1)
             }
             .font(.customBody)
-            .environment(\.layoutDirection, .rightToLeft)
             .navigationTitle("Setting")
         }
     }
@@ -43,4 +46,5 @@ struct SettingView: View {
 
 #Preview {
     SettingView()
+        .environment(\.layoutDirection, .rightToLeft)
 }

@@ -26,6 +26,9 @@ struct ContentView: View {
                     Label("Setting", systemImage: "gear")
                 }
         }
+        .minimizeTabBarOnScroll()
+        // Applied at the root so the system chrome (tab bar, navigation bars) is RTL too.
+        .environment(\.layoutDirection, .rightToLeft)
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = alwaysOn
         }

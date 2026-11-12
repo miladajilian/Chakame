@@ -40,6 +40,7 @@ struct CenturiesView: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search")
+            .minimizedSearchToolbar()
             .task {
                 if centuries.isEmpty {
                     await viewModel.fetchCenturies()
@@ -55,7 +56,6 @@ struct CenturiesView: View {
                 PagePoemView(currentIndex: route.index, poems: route.poems)
                     .environment(viewModel.categoryViewModel.poemViewModel)
             }
-            .environment(\.layoutDirection, .rightToLeft)
         }
     }
 

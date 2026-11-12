@@ -41,12 +41,17 @@ struct CategoryView: View {
             }
         }
         .font(.customBody)
-        .environment(\.layoutDirection, .rightToLeft)
+        .navigationSubtitleIfAvailable(subtitle)
         .task {
             if categories.isEmpty, poems.isEmpty {
                 await viewModel.fetchCategories(parentCatId: parentCatId)
             }
         }
+    }
+
+    /// e.g. "12 poems". Hidden while loading or for categories that hold only subcategories.
+    private var subtitle: Text {
+        poems.isEmpty ? Text(verbatim: "") : Text("\(poems.count.persianFormatted) poems")
     }
 }
 
