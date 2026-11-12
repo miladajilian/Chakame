@@ -41,6 +41,16 @@
         }
       }
     },
+    "Clear and Refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پاک کردن و به‌روزرسانی"
+          }
+        }
+      }
+    },
     "Copy all verses" : {
       "localizations" : {
         "en" : {
@@ -57,6 +67,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "رونوشت مصرع"
+          }
+        }
+      }
+    },
+    "Couldn't clear the saved data. Please try again." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پاک کردن داده‌های ذخیره‌شده ممکن نشد. لطفاً دوباره تلاش کنید."
           }
         }
       }
@@ -157,6 +177,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "شعر قبلی"
+          }
+        }
+      }
+    },
+    "Refresh all poems?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "همهٔ اشعار به‌روزرسانی شوند؟"
+          }
+        }
+      }
+    },
+    "Refresh Poems from Ganjoor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "به‌روزرسانی اشعار از گنجور"
+          }
+        }
+      }
+    },
+    "RefreshConfirmationMessage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اشعار ذخیره‌شده پاک می‌شوند و هنگام باز کردن، تازه‌ترین نسخه از گنجور دریافت می‌شود. برای این کار به اینترنت نیاز دارید. اشعار مورد علاقهٔ شما باقی می‌مانند."
+          }
+        }
+      }
+    },
+    "RefreshExplanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "چکامه شاعران و اشعاری را که باز می‌کنید روی گوشی ذخیره می‌کند تا دفعهٔ بعد سریع‌تر و حتی بدون اینترنت باز شوند. اگر از آن زمان در گنجور شاعر یا شعر تازه‌ای منتشر شده یا متنی اصلاح شده، با این گزینه نسخهٔ ذخیره‌شده پاک می‌شود و همه‌چیز دوباره و تازه از گنجور دریافت می‌شود. اشعار مورد علاقهٔ شما حفظ می‌شوند."
+          }
+        }
+      }
+    },
+    "Saved data was cleared. Poems now load fresh from Ganjoor." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "داده‌های ذخیره‌شده پاک شد. اشعار اکنون تازه از گنجور دریافت می‌شوند."
           }
         }
       }

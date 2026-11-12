@@ -1,7 +1,7 @@
 # SwiftFormat config. Run `make format`; agents' edits are formatted by the
 # Claude Code hook in .claude/settings.json.
 --swiftversion 5.10
---exclude build,DerivedData,scripts
+--exclude build,DerivedData,scripts,marketing
 
 --indent 4
 --maxwidth 140

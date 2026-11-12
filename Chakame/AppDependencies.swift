@@ -10,6 +10,7 @@ import SwiftData
 struct AppDependencies {
     let centuryViewModel: CenturyViewModel
     let poemViewModel: PoemViewModel
+    let settingViewModel: SettingViewModel
 
     init(
         container: ModelContainer,
@@ -28,11 +29,16 @@ struct AppDependencies {
             categoryStore: CategoryStoreService(context: context),
             poemViewModel: poemViewModel
         )
-        self.poemViewModel = poemViewModel
-        self.centuryViewModel = CenturyViewModel(
+        let centuryViewModel = CenturyViewModel(
             centuryFetcher: centuriesFetcher,
             centuryStore: CenturyStoreService(context: context),
             categoryViewModel: categoryViewModel
+        )
+        self.poemViewModel = poemViewModel
+        self.centuryViewModel = centuryViewModel
+        self.settingViewModel = SettingViewModel(
+            cacheStore: CacheStoreService(context: context),
+            reload: { await centuryViewModel.fetchCenturies() }
         )
     }
 

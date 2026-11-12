@@ -4,6 +4,7 @@ excluded:
     - build
     - DerivedData
     - scripts
+    - marketing
 
 opt_in_rules:
     - force_unwrapping
