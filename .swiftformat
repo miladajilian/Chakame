@@ -1,0 +1,16 @@
+# SwiftFormat config. Run `make format`; agents' edits are formatted by the
+# Claude Code hook in .claude/settings.json.
+--swiftversion 5.10
+--exclude build,DerivedData,scripts
+
+--indent 4
+--maxwidth 140
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--commas inline
+--stripunusedargs closure-only
+--header ignore
+
+# Keep diffs small on existing code
+--disable redundantSelf,redundantReturn,wrapMultilineStatementBraces,trailingCommas,blankLinesAtStartOfScope,blankLinesAtEndOfScope,docComments,redundantType,preferKeyPath

@@ -15,8 +15,23 @@ Chakame is an iOS app that provides access to a collection of Persian poems usin
 
    ```bash
    git clone https://github.com/miladajilian/chakame.git
+   ```
 2. Open Chakame.xcodeproj in Xcode.
 3. Build and run the project on your iOS device or simulator.
+
+## Development
+
+Requires Xcode 16 or later. The project uses synchronized folders, so files added on disk are picked up automatically. The lint and format tools are optional locally, but CI runs lint.
+
+```bash
+brew install swiftlint swiftformat xcbeautify
+make help     # list commands
+make build
+make test     # unit tests
+make lint
+```
+
+Conventions for contributors and AI coding agents are in [CLAUDE.md](CLAUDE.md) (also available as `AGENTS.md`).
 
 ## How to Use
 
