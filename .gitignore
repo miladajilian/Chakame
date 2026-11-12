@@ -91,3 +91,6 @@ iOSInjectionProject/
 .DS_Store
 ChakameTests/.DS_Store
 ChakameTests/Tests/.DS_Store
+
+# Claude Code: personal settings stay local
+.claude/settings.local.json

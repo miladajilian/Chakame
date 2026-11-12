@@ -22,7 +22,7 @@ struct PoetRow: View {
                     state.image?.resizable()
                 }
             }
-            .aspectRatio(contentMode: .fit)
+            .scaledToFit()
             .frame(width: 50, height: 50)
             .cornerRadius(8)
 

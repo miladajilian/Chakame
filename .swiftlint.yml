@@ -1,4 +1,12 @@
 excluded:
     - ChakameTests
     - ChakameUITests
+    - build
+    - DerivedData
+    - scripts
+
+opt_in_rules:
+    - force_unwrapping
+    - fatal_error_message
+
 line_length: 140
