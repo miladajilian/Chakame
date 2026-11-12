@@ -1,0 +1,11 @@
+area,name,stack,base,likely_screen,revenue_hint,file
+Category,CategoryView,SwiftUI,View,yes,,Chakame/Category/Views/CategoryView.swift
+Centuries,CenturiesView,SwiftUI,View,yes,,Chakame/Centuries/Views/CenturiesView.swift
+Centuries,PoetSearchResults,SwiftUI,View,yes,,Chakame/Centuries/Views/PoetSearchResults.swift
+Centuries,PoetRow,SwiftUI,View,maybe,,Chakame/Centuries/Views/PoetRow.swift
+Chakame,ContentView,SwiftUI,View,yes,,Chakame/ContentView.swift
+Chakame,StoreUnavailableView,SwiftUI,View,maybe,,Chakame/StoreUnavailableView.swift
+Favorite,FavoriteView,SwiftUI,View,yes,,Chakame/Favorite/Views/FavoriteView.swift
+Poem,PagePoemView,SwiftUI,View,yes,,Chakame/Poem/Views/PagePoemView.swift
+Poem,VersesView,SwiftUI,View,maybe,,Chakame/Poem/Views/VersesView.swift
+Setting,SettingView,SwiftUI,View,yes,,Chakame/Setting/Views/SettingView.swift

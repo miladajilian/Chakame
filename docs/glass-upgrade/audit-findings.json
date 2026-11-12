@@ -1,0 +1,61 @@
+{
+  "facts": {
+    "deployment_targets": {
+      "17.0": 6
+    },
+    "swift_files": 74,
+    "swiftui_files": 12,
+    "uikit_files": 0,
+    "storyboards": 0,
+    "xibs": 0,
+    "scene_manifest": true,
+    "scene_delegate": false,
+    "compat_flag": [],
+    "snapshot_testing": false,
+    "icon_composer_icon": false,
+    "appiconset": 1,
+    "spm_platforms": []
+  },
+  "findings": [
+    {
+      "id": "O03-tab-root",
+      "severity": "info",
+      "file": "Chakame/ContentView.swift",
+      "line": 15,
+      "snippet": "TabView {",
+      "description": "Tab container"
+    },
+    {
+      "id": "L03-fixed-corner-radius",
+      "severity": "low",
+      "file": "Chakame/Centuries/Views/PoetRow.swift",
+      "line": 27,
+      "snippet": ".clipShape(.rect(cornerRadius: 8))",
+      "description": "Hardcoded corner radius"
+    },
+    {
+      "id": "O01-search",
+      "severity": "info",
+      "file": "Chakame/Centuries/Views/CenturiesView.swift",
+      "line": 42,
+      "snippet": ".searchable(text: $searchText, prompt: \"Search\")",
+      "description": "Search UI"
+    },
+    {
+      "id": "L02-controls-size",
+      "severity": "low",
+      "file": "Chakame/Setting/Views/SettingView.swift",
+      "line": 19,
+      "snippet": "Toggle(\"Keep Screen Always On\", isOn: $alwaysOn)",
+      "description": "Switch/slider/stepper"
+    },
+    {
+      "id": "O05-app-icon",
+      "severity": "info",
+      "file": "(project)",
+      "line": 0,
+      "snippet": "AppIcon.appiconset without Icon Composer .icon file",
+      "description": "Layered icon with dark/clear/tinted variants"
+    }
+  ]
+}
