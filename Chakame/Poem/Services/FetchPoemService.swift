@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct FetchPoemService {
     private let requestManager: RequestManagerProtocol
 
@@ -15,7 +16,7 @@ struct FetchPoemService {
 }
 
 extension FetchPoemService: PoemFetcher {
-    func fetchVerses(poemId: Int32) async -> [Verse] {
+    func fetchVerses(poemId: Int) async -> [Verse] {
         let requestData = ChakameRequest.getVerses(poemId: "\(poemId)")
         do {
             let verseContainer: VerseContainer = try await requestManager.perform(requestData)
@@ -26,7 +27,7 @@ extension FetchPoemService: PoemFetcher {
         }
     }
 
-    func fetchPoem(poemId: Int32) async -> Poem? {
+    func fetchPoem(poemId: Int) async -> Poem? {
         let requestData = ChakameRequest.getPoem(poemId: "\(poemId)")
         do {
             let poem: Poem = try await requestManager.perform(requestData)

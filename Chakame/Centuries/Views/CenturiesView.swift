@@ -5,57 +5,41 @@
 //  Created by Milad on 2024-01-24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CenturiesView: View {
-    @ObservedObject var viewModel = CenturyViewModel()
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \CenturyEntity.id, ascending: true)
-        ],
-        animation: .default
-    )
-    var centuries: FetchedResults<CenturyEntity>
-
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \PoetEntity.name, ascending: true)
-        ], animation: .default
-    )
-    var poets: FetchedResults<PoetEntity>
+    @State private var viewModel: CenturyViewModel
+    @Query(sort: \CenturyEntity.id, animation: .default)
+    private var centuries: [CenturyEntity]
 
     @State private var searchText = ""
 
+    init(viewModel: CenturyViewModel) {
+        _viewModel = State(initialValue: viewModel)
+    }
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if searchText.isEmpty {
                     ForEach(centuries) { century in
                         Section(header: Text(viewModel.getCenturyTitle(century: century))) {
-                            if let poets = century.poets?.allObjects as? [PoetEntity] {
-                                ForEach(poets) { poet in
-                                    NavigationLink(destination: destinationView(poet: poet)) {
-                                        PoetRow(poet: poet)
-                                    }
+                            ForEach(sortedPoets(of: century)) { poet in
+                                NavigationLink(value: CategoryRoute(id: poet.rootCatId, title: poet.nickname)) {
+                                    PoetRow(poet: poet)
                                 }
                             }
                         }
                     }
-                    if viewModel.isLoading && centuries.isEmpty {
+                    if viewModel.isLoading, centuries.isEmpty {
                         ProgressView("Fetching Poets list")
                     }
                 } else {
-                    ForEach(poets) { poet in
-                        NavigationLink(destination: destinationView(poet: poet)) {
-                            PoetRow(poet: poet)
-                        }
-                    }
+                    PoetSearchResults(searchText: searchText)
                 }
             }
             .searchable(text: $searchText, prompt: "Search")
-            .onChange(of: searchText, perform: { _ in
-                searchByName()
-            })
             .task {
                 if centuries.isEmpty {
                     await viewModel.fetchCenturies()
@@ -63,35 +47,27 @@ struct CenturiesView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Chakame")
+            .navigationDestination(for: CategoryRoute.self) { route in
+                CategoryView(viewModel: viewModel.categoryViewModel, parentCatId: route.id)
+                    .navigationTitle(route.title)
+            }
+            .navigationDestination(for: PoemRoute.self) { route in
+                PagePoemView(currentIndex: route.index, poems: route.poems)
+                    .environment(viewModel.categoryViewModel.poemViewModel)
+            }
             .environment(\.layoutDirection, .rightToLeft)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 
-    func destinationView(poet: PoetEntity) -> some View {
-        CategoryView(
-            viewModel: self.viewModel.categoryViewModel,
-            parentCatId: Int(poet.rootCatId)
-        )
-        .navigationTitle(poet.nickname ?? "")
+    private func sortedPoets(of century: CenturyEntity) -> [PoetEntity] {
+        century.poets.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
-    private func searchByName() {
-        let predicate: NSPredicate?
-        if !searchText.isEmpty {
-            let nickNamePredicate = NSPredicate(format: "nickname CONTAINS %@", searchText)
-            predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [nickNamePredicate])
-        } else {
-            predicate = nil
-        }
-        poets.nsPredicate = predicate
-    }
 }
 
 #Preview {
-    CenturiesView(
-        viewModel: CenturyViewModel(
-            centuryFetcher: CenturiesFetcherMock(),
-            centuryStore: CenturyStoreService(context: CoreDataHelper.previewContext)))
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    if let container = PreviewContainer.shared {
+        CenturiesView(viewModel: AppDependencies.preview(container: container).centuryViewModel)
+            .modelContainer(container)
+    }
 }

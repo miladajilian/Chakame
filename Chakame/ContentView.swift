@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    let managedObjectContext = PersistenceController.shared.container.viewContext
+    let dependencies: AppDependencies
     @AppStorage(Constants.UserDefaultsKeys.alwaysOn) private var alwaysOn: Bool = false
+
     var body: some View {
         TabView {
-            CenturiesView()
+            CenturiesView(viewModel: dependencies.centuryViewModel)
                 .tabItem {
                     Label("Home", systemImage: "list.bullet")
                 }
-            FavoriteView()
+            FavoriteView(poemViewModel: dependencies.poemViewModel)
                 .tabItem {
                     Label("Favorite", systemImage: "heart.fill")
                 }
@@ -28,10 +29,12 @@ struct ContentView: View {
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = alwaysOn
         }
-        .environment(\.managedObjectContext, managedObjectContext)
     }
 }
 
 #Preview {
-    ContentView()
+    if let container = PreviewContainer.shared {
+        ContentView(dependencies: .preview(container: container))
+            .modelContainer(container)
+    }
 }

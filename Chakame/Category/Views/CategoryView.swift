@@ -5,28 +5,37 @@
 //  Created by Milad on 2024-01-30.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CategoryView: View {
-    @ObservedObject var viewModel: CategoryViewModel
-    @FetchRequest var categories: FetchedResults<CategoryEntity>
-    @FetchRequest var poems: FetchedResults<PoemEntity>
+    let viewModel: CategoryViewModel
     let parentCatId: Int
+    @Query private var categories: [CategoryEntity]
+    @Query private var poems: [PoemEntity]
+
+    init(viewModel: CategoryViewModel, parentCatId: Int) {
+        self.viewModel = viewModel
+        self.parentCatId = parentCatId
+        _categories = Query(
+            filter: #Predicate<CategoryEntity> { $0.parentId == parentCatId },
+            sort: \CategoryEntity.title
+        )
+        _poems = Query(
+            filter: #Predicate<PoemEntity> { $0.parentId == parentCatId },
+            sort: \PoemEntity.id
+        )
+    }
+
     var body: some View {
         List {
             ForEach(categories) { category in
-                NavigationLink(
-                    category.title ?? "",
-                    destination: categoryDestinationView(category: category)
-                )
+                NavigationLink(category.title, value: CategoryRoute(id: category.id, title: category.title))
             }
             ForEach(poems.indices, id: \.self) { index in
-                NavigationLink(
-                    poems[index].title ?? "",
-                    destination: poemDestinationView(index: index)
-                )
+                NavigationLink(poems[index].title, value: PoemRoute(poems: poems, index: index))
             }
-            if viewModel.isLoading && categories.isEmpty && poems.isEmpty {
+            if viewModel.isLoading, categories.isEmpty, poems.isEmpty {
                 ProgressView("Fetching category list")
                     .frame(maxWidth: .infinity)
             }
@@ -34,46 +43,21 @@ struct CategoryView: View {
         .font(.customBody)
         .environment(\.layoutDirection, .rightToLeft)
         .task {
-            if categories.isEmpty && poems.isEmpty {
+            if categories.isEmpty, poems.isEmpty {
                 await viewModel.fetchCategories(parentCatId: parentCatId)
             }
         }
     }
-
-    func categoryDestinationView(category: CategoryEntity) -> some View {
-        CategoryView(
-            viewModel: viewModel,
-            parentCatId: Int(category.id)
-        )
-        .navigationTitle(category.title ?? "")
-    }
-
-    func poemDestinationView(index: Int) -> some View {
-        PagePoemView(currentIndex: index, poems: Array(poems))
-            .environmentObject(viewModel.poemViewModel)
-    }
-}
-
-extension CategoryView {
-    init(viewModel: CategoryViewModel, parentCatId: Int) {
-        self.viewModel = viewModel
-        self.parentCatId = parentCatId
-
-        _categories = FetchRequest(
-            fetchRequest: viewModel.getCategoryFetchRequest(parentCatId: parentCatId)
-        )
-        _poems = FetchRequest(
-            fetchRequest: viewModel.getPoemFetchRequest(parentCatId: parentCatId)
-        )
-    }
 }
 
 #Preview {
-    CategoryView(
-        viewModel: CategoryViewModel(
-            categoriesFetcher: CategoriesFetcherMock(),
-            categoryStore: CategoryStoreService(context: CoreDataHelper.previewContext)),
-        parentCatId: 32
-    )
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    if let container = PreviewContainer.shared {
+        NavigationStack {
+            CategoryView(
+                viewModel: AppDependencies.preview(container: container).centuryViewModel.categoryViewModel,
+                parentCatId: Poem.mock?.parentId ?? 0
+            )
+        }
+        .modelContainer(container)
+    }
 }

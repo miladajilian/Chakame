@@ -5,12 +5,13 @@
 //  Created by Milad on 2024-02-02.
 //
 
-import CoreData
+import SwiftData
 
+@MainActor
 struct CategoryStoreService {
-    private let context: NSManagedObjectContext
+    private let context: ModelContext
 
-    init(context: NSManagedObjectContext) {
+    init(context: ModelContext) {
         self.context = context
     }
 }
@@ -18,29 +19,17 @@ struct CategoryStoreService {
 extension CategoryStoreService: CategoryStore {
     func save(categories: [Category]) async throws {
         guard !categories.isEmpty else { return }
-
-        await PersistenceController.shared.container.performBackgroundTask { context in
-            for var category in categories {
-                category.toManagedObject(context: context)
-            }
-            do {
-                try context.save()
-            } catch {
-                print("Error storing category ... \(error.localizedDescription)")
-            }
+        for category in categories {
+            try category.upsert(into: context)
         }
+        try context.save()
     }
 
     func save(poems: [Poem]) async throws {
-        await PersistenceController.shared.container.performBackgroundTask { context in
-            for var poem in poems {
-                _ = poem.toManagedObject(context: context)
-            }
-            do {
-                try context.save()
-            } catch {
-                print("Error storing poem ... \(error.localizedDescription)")
-            }
+        guard !poems.isEmpty else { return }
+        for poem in poems {
+            try poem.upsert(into: context)
         }
+        try context.save()
     }
 }

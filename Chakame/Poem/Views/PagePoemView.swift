@@ -1,5 +1,5 @@
 //
-//  PoemTabView.swift
+//  PagePoemView.swift
 //  Chakame
 //
 //  Created by Milad on 2024-04-11.
@@ -9,13 +9,13 @@ import SwiftUI
 
 struct PagePoemView: View {
     @State var currentIndex: Int
-    var poems: [PoemEntity]
-    @EnvironmentObject var viewModel: PoemViewModel
+    let poems: [PoemEntity]
+    @Environment(PoemViewModel.self) private var viewModel
 
     var body: some View {
         ZStack {
             VersesView(poemId: poems[currentIndex].id)
-                .navigationTitle(poems[currentIndex].title ?? "")
+                .navigationTitle(poems[currentIndex].title)
         }
         .overlay(alignment: .bottom) {
             HStack {
@@ -64,16 +64,14 @@ struct PagePoemView: View {
 }
 
 #Preview {
-    if let poems = CoreDataHelper.getTestPoems() {
-        PagePoemView(currentIndex: 1,
-                     poems: poems
-        )
-        .environmentObject(
-            PoemViewModel(
-                poemFetcher: PoemFetcherMock(),
-                poemStore: PoemStoreService(context: CoreDataHelper.previewContext))
-        )
-    } else {
-        EmptyView()
+    if let container = PreviewContainer.shared {
+        let poems = PreviewContainer.all(PoemEntity.self)
+        if !poems.isEmpty {
+            NavigationStack {
+                PagePoemView(currentIndex: 0, poems: poems)
+            }
+            .environment(AppDependencies.preview(container: container).poemViewModel)
+            .modelContainer(container)
+        }
     }
 }

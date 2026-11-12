@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import CoreData
+import Observation
 
+@MainActor
 protocol CategoryStore {
     func save(categories: [Category]) async throws
     func save(poems: [Poem]) async throws
@@ -17,64 +18,39 @@ protocol CategoriesFetcher {
     func fetchCategories(parentId: Int) async -> CategoryContainer
 }
 
+@Observable
 @MainActor
-final class CategoryViewModel: ObservableObject {
-    @Published var isLoading: Bool
+final class CategoryViewModel {
+    var isLoading: Bool
 
-    private(set) var categoriesFetcher: CategoriesFetcher
-    private(set) var categoryStore: CategoryStore
+    @ObservationIgnored private let categoriesFetcher: CategoriesFetcher
+    @ObservationIgnored private let categoryStore: CategoryStore
 
-    let poemViewModel: PoemViewModel = PoemViewModel()
+    let poemViewModel: PoemViewModel
 
     init(
-        isLoading: Bool  = false,
+        isLoading: Bool = false,
         categoriesFetcher: CategoriesFetcher = FetchCategoriesService(requestManager: RequestManager.shared),
-        categoryStore: CategoryStore = CategoryStoreService(context: PersistenceController.shared.container.viewContext)
+        categoryStore: CategoryStore,
+        poemViewModel: PoemViewModel
     ) {
         self.isLoading = isLoading
         self.categoriesFetcher = categoriesFetcher
         self.categoryStore = categoryStore
+        self.poemViewModel = poemViewModel
     }
 
-    @MainActor func fetchCategories(parentCatId: Int) async {
+    func fetchCategories(parentCatId: Int) async {
         guard isLoading == false else { return }
 
         isLoading = true
+        defer { isLoading = false }
         let categoryContainer = await categoriesFetcher.fetchCategories(parentId: parentCatId)
         do {
-            try await categoryStore.save(
-                categories: categoryContainer.categories
-            )
-            try await categoryStore.save(
-                poems: categoryContainer.poems
-            )
-            self.isLoading = false
+            try await categoryStore.save(categories: categoryContainer.categories)
+            try await categoryStore.save(poems: categoryContainer.poems)
         } catch {
             print("Error storing categories... \(error.localizedDescription)")
-            self.isLoading = false
         }
-    }
-
-    func getCategoryFetchRequest(parentCatId: Int) -> NSFetchRequest<CategoryEntity> {
-        let categoryRequest: NSFetchRequest<CategoryEntity> = CategoryEntity.fetchRequest()
-        categoryRequest.predicate = NSPredicate(
-            format: "parentId = \(parentCatId)"
-        )
-
-        categoryRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CategoryEntity.title, ascending: true)
-        ]
-        return categoryRequest
-    }
-    func getPoemFetchRequest(parentCatId: Int) -> NSFetchRequest<PoemEntity> {
-        let poemsRequest: NSFetchRequest<PoemEntity> = PoemEntity.fetchRequest()
-        poemsRequest.predicate = NSPredicate(
-            format: "parentId = \(parentCatId)"
-        )
-
-        poemsRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \PoemEntity.id, ascending: true)
-        ]
-        return poemsRequest
     }
 }
