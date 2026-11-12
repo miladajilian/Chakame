@@ -21,7 +21,7 @@ Chakame is an iOS app that provides access to a collection of Persian poems usin
 
 ## Development
 
-Requires Xcode 16 or later. The project uses synchronized folders, so files added on disk are picked up automatically. The lint and format tools are optional locally, but CI runs lint.
+Requires Xcode 16 or later. The project uses synchronized folders, so files added on disk are picked up automatically. The lint and format tools are optional, but run `make lint` before committing.
 
 ```bash
 brew install swiftlint swiftformat xcbeautify

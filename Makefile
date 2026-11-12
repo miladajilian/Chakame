@@ -1,4 +1,4 @@
-# Chakame developer commands. Used by humans, AI agents and CI alike.
+# Chakame developer commands. Used by humans and AI agents alike.
 # Simulator: a booted iPhone, else the newest one. Override with
 #   make test SIM="iPhone 17"     or     make test SIM_ID=<udid>
 
