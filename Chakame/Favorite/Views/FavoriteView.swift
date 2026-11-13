@@ -17,9 +17,13 @@ struct FavoriteView: View {
     )
     private var poems: [PoemEntity]
 
+    /// The poem shown in the detail column. Collapses to push navigation in compact width.
+    /// The route keeps its own copy of the list, so unfavoriting the open poem keeps it on screen.
+    @State private var selected: PoemRoute?
+
     var body: some View {
-        NavigationStack {
-            List {
+        NavigationSplitView {
+            List(selection: $selected) {
                 ForEach(poems.indices, id: \.self) { index in
                     let poem = poems[index]
                     NavigationLink(
@@ -39,9 +43,16 @@ struct FavoriteView: View {
             }
             .font(.customBody)
             .navigationTitle("Favorite")
-            .navigationDestination(for: PoemRoute.self) { route in
-                PagePoemView(currentIndex: route.index, poems: route.poems)
-                    .environment(poemViewModel)
+        } detail: {
+            NavigationStack {
+                if let selected {
+                    PagePoemView(currentIndex: selected.index, poems: selected.poems)
+                        .environment(poemViewModel)
+                        .id(selected)
+                } else {
+                    ContentUnavailableView("Choose a poem", systemImage: "book")
+                        .font(.customBody)
+                }
             }
         }
     }

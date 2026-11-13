@@ -41,6 +41,26 @@
         }
       }
     },
+    "Choose a poem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یک شعر را انتخاب کنید"
+          }
+        }
+      }
+    },
+    "Choose a poet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یک شاعر را انتخاب کنید"
+          }
+        }
+      }
+    },
     "Clear and Refresh" : {
       "localizations" : {
         "en" : {

@@ -5,17 +5,20 @@
 //  Created by Milad on 2024-02-18.
 //
 
-import Foundation
 import SwiftUI
 
-extension Font {
-    public static var customBody: Font {
-        return Font.custom("Vazirmatn-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize)
+/// Vazirmatn at the system text style sizes. `relativeTo:` makes it follow Dynamic Type
+/// live, like the system font does.
+public extension Font {
+    static var customBody: Font {
+        Font.custom("Vazirmatn-Regular", size: 17, relativeTo: .body)
     }
-    public static var customcaption1: Font {
-        return Font.custom("Vazirmatn-Regular", size: UIFont.preferredFont(forTextStyle: .caption1).pointSize)
+
+    static var customcaption1: Font {
+        Font.custom("Vazirmatn-Regular", size: 12, relativeTo: .caption)
     }
-    public static var customTitle3: Font {
-        return Font.custom("Vazirmatn-Regular", size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
+
+    static var customTitle3: Font {
+        Font.custom("Vazirmatn-Regular", size: 20, relativeTo: .title3)
     }
 }

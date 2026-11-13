@@ -11,6 +11,7 @@ struct PagePoemView: View {
     @State var currentIndex: Int
     let poems: [PoemEntity]
     @Environment(PoemViewModel.self) private var viewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private var poem: PoemEntity {
         poems[currentIndex]
@@ -23,7 +24,9 @@ struct PagePoemView: View {
             .task {
                 viewModel.fetchVerses(poem: poem)
             }
-            .toolbar(.hidden, for: .tabBar)
+            // Hide the bottom tab bar on phones to make room for the reader. In regular width
+            // (iPad, iPhone Duo inner display) the tabs stay reachable.
+            .toolbar(horizontalSizeClass == .compact ? .hidden : .automatic, for: .tabBar)
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
                     PoemShareLink(poem: poem)
@@ -35,6 +38,7 @@ struct PagePoemView: View {
                     Button("Previous poem", systemImage: "chevron.backward") {
                         show(index: currentIndex - 1)
                     }
+                    .keyboardShortcut(.rightArrow, modifiers: .command)
                     .disabled(currentIndex == 0)
 
                     Spacer()
@@ -42,6 +46,7 @@ struct PagePoemView: View {
                     Button("Next poem", systemImage: "chevron.forward") {
                         show(index: currentIndex + 1)
                     }
+                    .keyboardShortcut(.leftArrow, modifiers: .command)
                     .disabled(currentIndex == poems.count - 1)
                 }
             }
@@ -54,6 +59,7 @@ struct PagePoemView: View {
             Label("Favorite", systemImage: poem.isFavorite ? "heart.fill" : "heart")
                 .symbolEffect(.bounce, value: poem.isFavorite)
         }
+        .keyboardShortcut("d", modifiers: .command)
         .sensoryFeedback(.success, trigger: poem.isFavorite) { _, isFavorite in isFavorite }
     }
 
