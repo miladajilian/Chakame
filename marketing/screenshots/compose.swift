@@ -1,6 +1,8 @@
 // Composes App Store marketing screenshots from raw simulator captures.
 // Usage: swift marketing/screenshots/compose.swift   (run from the repo root)
-// Output: marketing/screenshots/iphone-6.3/*.png (1206x2622), marketing/screenshots/ipad-13/*.png (2064x2752)
+// Output: marketing/screenshots/iphone-6.9/*.png (1320x2868), marketing/screenshots/ipad-13/*.png (2064x2752)
+// Captions come from the "Screenshot captions" list in marketing/AppStoreListing.md
+// ("headline [highlighted second line] — subline"), matched to `slides` in order.
 
 import AppKit
 import CoreText
@@ -39,72 +41,64 @@ struct Slide {
     var hero = false
 }
 
-let slides: [Slide] = [
-    Slide(
-        raw: "04-poem",
-        title1: "دیوان شاعران پارسی",
-        title2: "در جیب شما",
-        subtitle: "شعر کلاسیک فارسی را زیبا و آسوده بخوانید",
-        theme: .blue,
-        hero: true
-    ),
-    Slide(
-        raw: "01-home",
-        title1: "سخنوران بزرگ",
-        title2: "در یک نگاه",
-        subtitle: "فردوسی، مولانا، حافظ، خیام، سعدی و صدها شاعر دیگر",
-        theme: .light
-    ),
-    Slide(
-        raw: "02-poet",
-        title1: "همهٔ آثار هر شاعر",
-        title2: "مرتب و دسته‌بندی‌شده",
-        subtitle: "غزلیات، رباعیات، قصاید، مثنوی و…",
-        theme: .navy
-    ),
-    Slide(
-        raw: "03-ghazals",
-        title1: "۴۹۵ غزل حافظ",
-        title2: "تنها با یک لمس",
-        subtitle: "فهرست کامل اشعار هر دفتر",
-        theme: .blue
-    ),
-    Slide(
-        raw: "05-rubai",
-        title1: "رباعیات خیام",
-        title2: "خوش‌خوان و چشم‌نواز",
-        subtitle: "با قلم وزیرمتن، ساخته‌شده برای خط فارسی",
-        theme: .light
-    ),
-    Slide(
-        raw: "07-golestan",
-        title1: "گلستان سعدی",
-        title2: "نثر و نظم در کنار هم",
-        subtitle: "حکایت‌ها را همان‌گونه که نوشته شده‌اند بخوانید",
-        theme: .navy
-    ),
-    Slide(
-        raw: "06-copy",
-        title1: "رونوشت یک مصراع",
-        title2: "یا تمام ابیات",
-        subtitle: "بیت محبوبتان را با دوستان به اشتراک بگذارید",
-        theme: .blue
-    ),
-    Slide(
-        raw: "08-favorites",
-        title1: "شعرهای محبوب شما",
-        title2: "همیشه دم دست",
-        subtitle: "با یک لمس روی قلب نگهشان دارید، حتی بدون اینترنت",
-        theme: .light
-    ),
-    Slide(
-        raw: "09-search",
-        title1: "شاعر دلخواهتان را",
-        title2: "در یک لحظه بیابید",
-        subtitle: "جستجوی سریع میان صدها سخنور پارسی‌گوی",
-        theme: .navy
-    ),
+/// Raw capture, background and hero flag for each screenshot, in App Store order.
+let layouts: [(raw: String, theme: Theme, hero: Bool)] = [
+    ("04-poem", .blue, true),
+    ("01-home", .light, false),
+    ("02-poet", .navy, false),
+    ("03-ghazals", .blue, false),
+    ("05-rubai", .light, false),
+    ("07-golestan", .navy, false),
+    ("06-copy", .blue, false),
+    ("08-favorites", .light, false),
+    ("09-search", .navy, false),
 ]
+
+/// Reads `N. title1 [title2] — subtitle` lines after "**Screenshot captions**" in the listing.
+func readCaptions() throws -> [(title1: String, title2: String, subtitle: String)] {
+    let text = try String(contentsOf: base.deletingLastPathComponent().appendingPathComponent("AppStoreListing.md"), encoding: .utf8)
+    var inList = false
+    var captions: [(String, String, String)] = []
+    for line in text.components(separatedBy: "\n") {
+        if line.hasPrefix("**Screenshot captions**") { inList = true; continue }
+        guard inList else { continue }
+        if line.hasPrefix("## ") || line.hasPrefix("---") { break }
+        guard let dot = line.firstIndex(of: "."), Int(line[..<dot]) != nil else { continue }
+        let parts = line[line.index(after: dot)...].components(separatedBy: " — ")
+        let headline = parts[0]
+        guard parts.count == 2, let open = headline.firstIndex(of: "["), let close = headline.firstIndex(of: "]") else {
+            throw NSError(domain: "compose", code: 2, userInfo: [NSLocalizedDescriptionKey: "bad caption line: \(line)"])
+        }
+        captions.append((
+            headline[..<open].trimmingCharacters(in: .whitespaces),
+            String(headline[headline.index(after: open)..<close]),
+            parts[1].trimmingCharacters(in: .whitespaces)
+        ))
+    }
+    return captions
+}
+
+let slides: [Slide]
+do {
+    let captions = try readCaptions()
+    guard captions.count == layouts.count else {
+        print("error: AppStoreListing.md has \(captions.count) screenshot captions, compose.swift has \(layouts.count) layouts")
+        exit(1)
+    }
+    slides = zip(layouts, captions).map { layout, caption in
+        Slide(
+            raw: layout.raw,
+            title1: caption.title1,
+            title2: caption.title2,
+            subtitle: caption.subtitle,
+            theme: layout.theme,
+            hero: layout.hero
+        )
+    }
+} catch {
+    print("error: \(error)")
+    exit(1)
+}
 
 // MARK: - Device specs
 
@@ -124,17 +118,17 @@ struct Device {
 }
 
 let iphone = Device(
-    folder: "iphone-6.3",
+    folder: "iphone-6.9",
     rawFolder: "raw/iphone",
-    size: CGSize(width: 1206, height: 2622),
-    deviceWidth: 930,
-    screenTop: 790,
-    screenCorner: 128,
-    bezel: 26,
-    titleSize: 104,
-    subtitleSize: 50,
-    titleTop: 190,
-    iconSize: 150,
+    size: CGSize(width: 1320, height: 2868),
+    deviceWidth: 1018,
+    screenTop: 865,
+    screenCorner: 140,
+    bezel: 28,
+    titleSize: 114,
+    subtitleSize: 55,
+    titleTop: 208,
+    iconSize: 164,
     isPad: false
 )
 let ipad = Device(

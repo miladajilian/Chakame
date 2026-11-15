@@ -63,6 +63,17 @@ ChakameUITests/                         # launch smoke test
 - Keep files small and per type, and match the existing folder for each layer.
 - SwiftLint also runs as an Xcode build phase, so lint violations show up in builds.
 
+## Releasing to the App Store
+
+When asked to release or upload a new version, run `scripts/release.sh <x.y[.z]>` from a clean `main` (in the background: archiving and Apple's processing take a while). In order, it: dry-runs the listing and API access → bumps `MARKETING_VERSION` and the build number → `make lint test` → archives and uploads → commits, tags `v<version>` and pushes the bump → creates the version in App Store Connect, sends `marketing/AppStoreListing.md` and the screenshots, and attaches the build.
+
+- **Before running**, update What's New in `marketing/AppStoreListing.md`; ask the user what changed if you don't know.
+- Add `--submit` only when the user explicitly asks to submit for App Review in this request.
+- `scripts/release.sh --check` only archives and exports locally (tests signing, uploads nothing).
+- Listing only: `swift marketing/upload_listing.swift` is a dry run (with no version in preparation it compares against the live one); show the user the changes, then rerun with `--apply`. Options: `--version`, `--create`, `--verbose`, `--screenshots`, `--promo-only` (promotional text only; works on the live version without review).
+- Screenshots live in `marketing/screenshots/{iphone-6.9,ipad-13}`. After UI or caption changes, re-capture into `marketing/screenshots/raw/{iphone,ipad}` and run `swift marketing/screenshots/compose.swift`; captions are the "Screenshot captions" list in `AppStoreListing.md`.
+- Signing and upload use the Apple ID signed in to Xcode; the API calls use an App Store Connect API key (App Manager) at `~/.appstoreconnect/private_keys/AuthKey_<ASC_KEY_ID>.p8`, with `ASC_KEY_ID` and `ASC_ISSUER_ID` in `~/.config/appstoreconnect.env` (or the environment). **This repo is public:** never commit the key, its key ID, the issuer ID or any other credential.
+
 ## Agent skills
 
 These skills are installed globally (`~/.claude/skills`, `~/.agents/skills`, Claude Code plugins). They default to the newest toolchain (Swift 6.2+, iOS 26/27). **This project uses Swift 5 language mode and iOS 17.0 for every target**, so the project's settings win when they conflict with a skill.
