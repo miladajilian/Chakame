@@ -21,24 +21,45 @@ with the "Screenshot captions" list below.
 
 ## English (U.S.)
 
-**Name** (7/30)
+**Name** (23/30)
 ```
-Chakame
+Chakame: Persian Poetry
 ```
-**Subtitle** (13/30)
+**Subtitle** (28/30)
 ```
-Persian poems
+Hafez, Rumi, Saadi & Khayyam
 ```
-**Keywords** (78/100)
+**Keywords** (100/100; no spaces after commas, no words already in Name/Subtitle)
 ```
-poem, poetry, shahname, chakame, شعر, شاعر, شاهنامه, حافظ, سعدی, فردوسی, چکامه
+Ferdowsi,Shahnameh,poem,farsi,ghazal,rubaiyat,masnavi,شعر,حافظ,مولانا,سعدی,خیام,فردوسی,شاهنامه,چکامه
 ```
-**Promotional Text** (0/170, optional)
+**Promotional Text** (137/170, optional)
 ```
+Hafez, Rumi, Khayyam and Saadi in one beautiful, ad-free reader. Save the poems you love with a tap and read them anytime – even offline.
 ```
-**Description** (177/4000)
+**Description** (1227/4000)
 ```
-Chakame is an iOS app that provides access to a collection of Persian poems. Enjoy reading numerous Persian poems with the convenience of locally stored data after the download.
+Read the great Persian poets in their own words – beautifully typeset, organized, and available offline.
+
+Chakame brings the treasury of classical Persian (Farsi) poetry to your iPhone and iPad: the Divan of Hafez, the Masnavi of Rumi (Molana), the Shahnameh of Ferdowsi, the Rubaiyat of Omar Khayyam, the Golestan and Bustan of Saadi, and hundreds more poets across a thousand years of literature.
+
+EVERY POET, EVERY BOOK
+• Browse poets by century, from Rudaki to the modern era
+• Each poet's complete works, sorted by collection: ghazals, rubaiyat, qasidas, masnavis and more
+• Find any poet in a moment with fast search
+
+MADE FOR READING
+• Clean, distraction-free pages set in Vazirmatn, a typeface designed for Persian script
+• Full right-to-left layout and Persian interface
+• Prose and verse side by side, exactly as written – read Golestan's stories as Saadi wrote them
+• Keep the screen awake while you read
+
+KEEP AND SHARE
+• Tap the heart to save your favorite poems
+• Favorites and poems you've opened stay on your device – read them without internet
+• Copy a single line or the whole poem and share it with friends
+
+Poem texts come from the open Ganjoor project. Chakame is free, with no ads and no account required.
 ```
 **What's New in This Version**
 ```
