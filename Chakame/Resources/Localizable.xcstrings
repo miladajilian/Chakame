@@ -201,6 +201,26 @@
         }
       }
     },
+    "Rate Chakame" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "به چکامه امتیاز دهید"
+          }
+        }
+      }
+    },
+    "RateFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگر چکامه را دوست دارید، با امتیاز و نظر خود به دیگران کمک کنید آن را پیدا کنند."
+          }
+        }
+      }
+    },
     "Refresh all poems?" : {
       "localizations" : {
         "en" : {
@@ -317,6 +337,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "با روشن کردن این تنظیم، صفحه نمایش شما در زمان استفاده از برنامه روشن خواهد ماند و قفل نخواهد شد"
+          }
+        }
+      }
+    },
+    "Write a Review" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوشتن نظر در اپ استور"
           }
         }
       }

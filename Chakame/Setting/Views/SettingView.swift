@@ -5,6 +5,7 @@
 //  Created by Milad on 2024-03-11.
 //
 
+import StoreKit
 import SwiftUI
 
 struct SettingView: View {
@@ -12,6 +13,7 @@ struct SettingView: View {
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     @AppStorage(Constants.UserDefaultsKeys.alwaysOn) private var alwaysOn: Bool = false
     @State private var isConfirmingRefresh = false
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         NavigationStack {
@@ -27,6 +29,8 @@ struct SettingView: View {
                 }
 
                 refreshSection
+
+                rateSection
 
                 // Lives inside the Form so it scrolls with the content instead of
                 // sitting under the floating tab bar.
@@ -55,6 +59,26 @@ struct SettingView: View {
             } message: {
                 Text("RefreshConfirmationMessage")
             }
+        }
+    }
+
+    /// `requestReview` shows Apple's star sheet, but the system limits how often it appears
+    /// (and never shows it in TestFlight), so a link to the write-review page sits beside it.
+    private var rateSection: some View {
+        Section {
+            Button {
+                requestReview()
+            } label: {
+                Label("Rate Chakame", systemImage: "star")
+            }
+            if let url = Constants.AppStore.writeReviewURL {
+                Link(destination: url) {
+                    Label("Write a Review", systemImage: "square.and.pencil")
+                }
+            }
+        } footer: {
+            Text("RateFooter")
+                .font(.customcaption1)
         }
     }
 
