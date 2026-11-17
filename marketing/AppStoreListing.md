@@ -63,8 +63,11 @@ Poem texts come from the open Ganjoor project. Chakame is free, with no ads and 
 ```
 **What's New in This Version**
 ```
-Migration to a new database
-Update to the liquid glass interface
+• Poem lists now show each poem's first line under its title
+• New design for iPad
+• New "Refresh Poems from Ganjoor" option in Settings
+• Rate and review Chakame right from Settings
+• The tab bar and navigation now follow your device's language direction
 ```
 **Screenshot captions** (headline [highlighted second line] — subline, in App Store order; `compose.swift` renders them in this order)
 
