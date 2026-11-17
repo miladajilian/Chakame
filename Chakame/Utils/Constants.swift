@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct Constants {
-    struct UserDefaultsKeys {
+enum Constants {
+    enum UserDefaultsKeys {
         static let alwaysOn = "alwaysOn"
     }
 
-    struct API {
+    enum API {
         static let host = "api.ganjoor.net"
         static let url = "https://api.ganjoor.net"
+    }
+
+    enum AppStore {
+        static let appID = "6502296466"
+        static let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review")
     }
 }

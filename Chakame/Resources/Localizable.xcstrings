@@ -61,12 +61,22 @@
         }
       }
     },
-    "Clear and Refresh" : {
+    "Clear Cache" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "پاک کردن و به‌روزرسانی"
+            "value" : "پاک کردن حافظهٔ پنهان"
+          }
+        }
+      }
+    },
+    "Clear cache?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حافظهٔ پنهان پاک شود؟"
           }
         }
       }
@@ -201,22 +211,22 @@
         }
       }
     },
-    "Refresh all poems?" : {
+    "Rate Chakame" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "همهٔ اشعار به‌روزرسانی شوند؟"
+            "value" : "به چکامه امتیاز دهید"
           }
         }
       }
     },
-    "Refresh Poems from Ganjoor" : {
+    "RateFooter" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "به‌روزرسانی اشعار از گنجور"
+            "value" : "اگر چکامه را دوست دارید، با امتیاز و نظر خود به دیگران کمک کنید آن را پیدا کنند."
           }
         }
       }

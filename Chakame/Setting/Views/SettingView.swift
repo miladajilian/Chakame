@@ -28,6 +28,8 @@ struct SettingView: View {
 
                 refreshSection
 
+                rateSection
+
                 // Lives inside the Form so it scrolls with the content instead of
                 // sitting under the floating tab bar.
                 Section {} footer: {
@@ -45,16 +47,31 @@ struct SettingView: View {
             .font(.customBody)
             .navigationTitle("Setting")
             .confirmationDialog(
-                "Refresh all poems?",
+                "Clear cache?",
                 isPresented: $isConfirmingRefresh,
                 titleVisibility: .visible
             ) {
-                Button("Clear and Refresh", role: .destructive) {
+                Button("Clear Cache", role: .destructive) {
                     Task { await viewModel.refreshFromGanjoor() }
                 }
             } message: {
                 Text("RefreshConfirmationMessage")
             }
+        }
+    }
+
+    /// Opens the App Store's write-review page. `requestReview` isn't used: the system
+    /// limits how often its prompt appears (and never shows it in TestFlight).
+    private var rateSection: some View {
+        Section {
+            if let url = Constants.AppStore.writeReviewURL {
+                Link(destination: url) {
+                    Label("Rate Chakame", systemImage: "star")
+                }
+            }
+        } footer: {
+            Text("RateFooter")
+                .font(.customcaption1)
         }
     }
 
@@ -64,7 +81,7 @@ struct SettingView: View {
                 isConfirmingRefresh = true
             } label: {
                 HStack {
-                    Label("Refresh Poems from Ganjoor", systemImage: "arrow.clockwise")
+                    Label("Clear Cache", systemImage: "trash")
                     Spacer()
                     if viewModel.refreshState == .refreshing {
                         ProgressView()
