@@ -41,8 +41,8 @@ struct ContentView: View {
                 .tag(Tab.setting)
         }
         .minimizeTabBarOnScroll()
-        // Applied at the root so the system chrome (tab bar, navigation bars) is RTL too.
-        .environment(\.layoutDirection, .rightToLeft)
+        // No RTL override here: the tab bar and navigation (back button, swipe-back edge)
+        // follow the system like other apps. Screens apply `persianLayout()` to their content.
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = alwaysOn
         }

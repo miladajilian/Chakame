@@ -45,6 +45,7 @@ struct SettingView: View {
                 }
             }
             .font(.customBody)
+            .persianLayout()
             .navigationTitle("Setting")
             .confirmationDialog(
                 "Clear cache?",
@@ -110,5 +111,5 @@ struct SettingView: View {
 
 #Preview {
     SettingView(viewModel: SettingViewModel(cacheStore: CacheStoreMock(), reload: {}))
-        .environment(\.layoutDirection, .rightToLeft)
+        .persianLayout()
 }

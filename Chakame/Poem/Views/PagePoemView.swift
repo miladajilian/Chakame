@@ -12,6 +12,8 @@ struct PagePoemView: View {
     let poems: [PoemEntity]
     @Environment(PoemViewModel.self) private var viewModel
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    /// The toolbars follow the system direction; only the verses are always RTL.
+    @Environment(\.layoutDirection) private var layoutDirection
 
     private var poem: PoemEntity {
         poems[currentIndex]
@@ -19,6 +21,7 @@ struct PagePoemView: View {
 
     var body: some View {
         VersesView(poemId: poem.id)
+            .persianLayout()
             .navigationTitle(poem.title)
             .navigationSubtitleIfAvailable(Text("\((currentIndex + 1).persianFormatted) of \(poems.count.persianFormatted)"))
             .task {
@@ -33,12 +36,12 @@ struct PagePoemView: View {
                     favoriteButton
                 }
                 // System bottom bar: glass on iOS 26+, a standard toolbar below.
-                // The layout is RTL, so "previous" sits on the right and "next" on the left.
+                // "Previous" sits on the back side (left in LTR, right in RTL), like the back button.
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button("Previous poem", systemImage: "chevron.backward") {
                         show(index: currentIndex - 1)
                     }
-                    .keyboardShortcut(.rightArrow, modifiers: .command)
+                    .keyboardShortcut(backArrow, modifiers: .command)
                     .disabled(currentIndex == 0)
 
                     Spacer()
@@ -46,10 +49,18 @@ struct PagePoemView: View {
                     Button("Next poem", systemImage: "chevron.forward") {
                         show(index: currentIndex + 1)
                     }
-                    .keyboardShortcut(.leftArrow, modifiers: .command)
+                    .keyboardShortcut(forwardArrow, modifiers: .command)
                     .disabled(currentIndex == poems.count - 1)
                 }
             }
+    }
+
+    private var backArrow: KeyEquivalent {
+        layoutDirection == .rightToLeft ? .rightArrow : .leftArrow
+    }
+
+    private var forwardArrow: KeyEquivalent {
+        layoutDirection == .rightToLeft ? .leftArrow : .rightArrow
     }
 
     private var favoriteButton: some View {
@@ -78,7 +89,6 @@ struct PagePoemView: View {
                 PagePoemView(currentIndex: 0, poems: poems)
             }
             .environment(AppDependencies.preview(container: container).poemViewModel)
-            .environment(\.layoutDirection, .rightToLeft)
             .modelContainer(container)
         }
     }

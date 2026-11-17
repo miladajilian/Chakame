@@ -10,7 +10,7 @@ struct StoreUnavailableView: View {
     var body: some View {
         ContentUnavailableView("Unable to open the library", systemImage: "exclamationmark.triangle")
             .font(.customBody)
-            .environment(\.layoutDirection, .rightToLeft)
+            .persianLayout()
     }
 }
 

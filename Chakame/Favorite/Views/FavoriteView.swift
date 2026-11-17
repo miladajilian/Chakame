@@ -44,6 +44,7 @@ struct FavoriteView: View {
                 }
             }
             .font(.customBody)
+            .persianLayout()
             .navigationTitle("Favorite")
         } detail: {
             NavigationStack {
@@ -54,6 +55,7 @@ struct FavoriteView: View {
                 } else {
                     ContentUnavailableView("Choose a poem", systemImage: "book")
                         .font(.customBody)
+                        .persianLayout()
                 }
             }
         }

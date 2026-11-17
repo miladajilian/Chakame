@@ -41,6 +41,7 @@ struct CenturiesView: View {
                     PoetSearchResults(searchText: searchText)
                 }
             }
+            .persianLayout()
             .searchable(text: $searchText, prompt: "Search")
             .minimizedSearchToolbar()
             .task {
@@ -60,6 +61,7 @@ struct CenturiesView: View {
                             .font(.customBody)
                     }
                 }
+                .persianLayout()
                 .navigationDestination(for: CategoryRoute.self) { route in
                     categoryView(for: route)
                 }
@@ -75,6 +77,7 @@ struct CenturiesView: View {
 
     private func categoryView(for route: CategoryRoute) -> some View {
         CategoryView(viewModel: viewModel.categoryViewModel, parentCatId: route.id)
+            .persianLayout()
             .navigationTitle(route.title)
     }
 
