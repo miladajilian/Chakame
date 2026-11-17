@@ -5,7 +5,6 @@
 //  Created by Milad on 2024-03-11.
 //
 
-import StoreKit
 import SwiftUI
 
 struct SettingView: View {
@@ -13,7 +12,6 @@ struct SettingView: View {
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     @AppStorage(Constants.UserDefaultsKeys.alwaysOn) private var alwaysOn: Bool = false
     @State private var isConfirmingRefresh = false
-    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         NavigationStack {
@@ -49,11 +47,11 @@ struct SettingView: View {
             .font(.customBody)
             .navigationTitle("Setting")
             .confirmationDialog(
-                "Refresh all poems?",
+                "Clear cache?",
                 isPresented: $isConfirmingRefresh,
                 titleVisibility: .visible
             ) {
-                Button("Clear and Refresh", role: .destructive) {
+                Button("Clear Cache", role: .destructive) {
                     Task { await viewModel.refreshFromGanjoor() }
                 }
             } message: {
@@ -62,18 +60,13 @@ struct SettingView: View {
         }
     }
 
-    /// `requestReview` shows Apple's star sheet, but the system limits how often it appears
-    /// (and never shows it in TestFlight), so a link to the write-review page sits beside it.
+    /// Opens the App Store's write-review page. `requestReview` isn't used: the system
+    /// limits how often its prompt appears (and never shows it in TestFlight).
     private var rateSection: some View {
         Section {
-            Button {
-                requestReview()
-            } label: {
-                Label("Rate Chakame", systemImage: "star")
-            }
             if let url = Constants.AppStore.writeReviewURL {
                 Link(destination: url) {
-                    Label("Write a Review", systemImage: "square.and.pencil")
+                    Label("Rate Chakame", systemImage: "star")
                 }
             }
         } footer: {
@@ -88,7 +81,7 @@ struct SettingView: View {
                 isConfirmingRefresh = true
             } label: {
                 HStack {
-                    Label("Refresh Poems from Ganjoor", systemImage: "arrow.clockwise")
+                    Label("Clear Cache", systemImage: "trash")
                     Spacer()
                     if viewModel.refreshState == .refreshing {
                         ProgressView()

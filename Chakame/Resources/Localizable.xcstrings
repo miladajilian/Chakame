@@ -61,12 +61,22 @@
         }
       }
     },
-    "Clear and Refresh" : {
+    "Clear Cache" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "پاک کردن و به‌روزرسانی"
+            "value" : "پاک کردن حافظهٔ پنهان"
+          }
+        }
+      }
+    },
+    "Clear cache?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حافظهٔ پنهان پاک شود؟"
           }
         }
       }
@@ -221,26 +231,6 @@
         }
       }
     },
-    "Refresh all poems?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "همهٔ اشعار به‌روزرسانی شوند؟"
-          }
-        }
-      }
-    },
-    "Refresh Poems from Ganjoor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "به‌روزرسانی اشعار از گنجور"
-          }
-        }
-      }
-    },
     "RefreshConfirmationMessage" : {
       "localizations" : {
         "en" : {
@@ -337,16 +327,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "با روشن کردن این تنظیم، صفحه نمایش شما در زمان استفاده از برنامه روشن خواهد ماند و قفل نخواهد شد"
-          }
-        }
-      }
-    },
-    "Write a Review" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "نوشتن نظر در اپ استور"
           }
         }
       }
