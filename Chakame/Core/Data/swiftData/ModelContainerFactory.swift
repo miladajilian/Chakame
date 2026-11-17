@@ -11,7 +11,7 @@ enum ModelContainerFactory {
 
     /// Creates the app's container. Pass `inMemory: true` for tests and previews.
     static func make(inMemory: Bool = false) throws -> ModelContainer {
-        let schema = Schema(versionedSchema: ChakameSchemaV1.self)
+        let schema = Schema(versionedSchema: ChakameSchemaV2.self)
         let configuration: ModelConfiguration
         if inMemory {
             configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)

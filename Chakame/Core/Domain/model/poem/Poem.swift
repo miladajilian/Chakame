@@ -13,6 +13,8 @@ struct Poem: Codable {
     var title: String?
     var urlSlug: String?
     var fullTitle: String?
+    /// The poem's first line, shown under the title in lists. Only the category endpoint sends it.
+    var excerpt: String?
     var verses: [Verse]?
     var next: NeighborPoem?
     var previous: NeighborPoem?

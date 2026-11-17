@@ -6,8 +6,8 @@
 import Foundation
 import SwiftData
 
-/// First SwiftData schema. Any model change needs a new `VersionedSchema`
-/// and a stage in `ChakameMigrationPlan`.
+/// First SwiftData schema, frozen. Its models are nested copies (see `ChakameSchemaV1+Models.swift`)
+/// so its checksum keeps matching stores created by older app versions. Don't edit them.
 enum ChakameSchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
 

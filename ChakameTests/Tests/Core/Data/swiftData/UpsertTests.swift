@@ -54,6 +54,17 @@ struct UpsertTests {
         #expect(poem.fullTitle == "حافظ » غزل ۱")
     }
 
+    @Test func excerptIsStoredAndKeptWhenTheSinglePoemEndpointLeavesItOut() async throws {
+        let store = CategoryStoreService(context: context)
+        try await store.save(poems: [Poem(id: 20, parentId: 5, title: "غزل ۱", excerpt: "الا یا ایها الساقی")])
+        let poem = try #require(try context.first(where: #Predicate<PoemEntity> { $0.id == 20 }))
+        #expect(poem.excerpt == "الا یا ایها الساقی")
+
+        try await PoemStoreService(context: context).update(poem: Poem(id: 20, fullTitle: "حافظ » غزل ۱"))
+
+        #expect(poem.excerpt == "الا یا ایها الساقی")
+    }
+
     @Test func versesAreScopedByPoem() async throws {
         let store = VerseStoreService(context: context)
         try await store.save(verses: [Verse(id: 1, text: "a", vOrder: 1), Verse(id: 2, text: "b", vOrder: 2)], poemId: 10)

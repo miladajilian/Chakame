@@ -14,6 +14,10 @@ public extension Font {
         Font.custom("Vazirmatn-Regular", size: 17, relativeTo: .body)
     }
 
+    static var customSubheadline: Font {
+        Font.custom("Vazirmatn-Regular", size: 15, relativeTo: .subheadline)
+    }
+
     static var customcaption1: Font {
         Font.custom("Vazirmatn-Regular", size: 12, relativeTo: .caption)
     }

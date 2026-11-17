@@ -15,6 +15,8 @@ final class PoemEntity {
     var title: String = ""
     var fullTitle: String = ""
     var urlSlug: String = ""
+    /// The first line of the poem, added in `ChakameSchemaV2`.
+    var excerpt: String = ""
     /// The only user-owned data in the store; everything else is an API cache.
     var isFavorite: Bool = false
 

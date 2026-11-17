@@ -26,10 +26,12 @@ struct FavoriteView: View {
             List(selection: $selected) {
                 ForEach(poems.indices, id: \.self) { index in
                     let poem = poems[index]
-                    NavigationLink(
-                        poem.fullTitle.isEmpty ? poem.title : poem.fullTitle,
-                        value: PoemRoute(poems: poems, index: index)
-                    )
+                    NavigationLink(value: PoemRoute(poems: poems, index: index)) {
+                        PoemRow(
+                            title: poem.fullTitle.isEmpty ? poem.title : poem.fullTitle,
+                            excerpt: poem.excerpt
+                        )
+                    }
                 }
             }
             .overlay {

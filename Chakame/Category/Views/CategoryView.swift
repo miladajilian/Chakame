@@ -33,7 +33,9 @@ struct CategoryView: View {
                 NavigationLink(category.title, value: CategoryRoute(id: category.id, title: category.title))
             }
             ForEach(poems.indices, id: \.self) { index in
-                NavigationLink(poems[index].title, value: PoemRoute(poems: poems, index: index))
+                NavigationLink(value: PoemRoute(poems: poems, index: index)) {
+                    PoemRow(title: poems[index].title, excerpt: poems[index].excerpt)
+                }
             }
             if viewModel.isLoading, categories.isEmpty, poems.isEmpty {
                 ProgressView("Fetching category list")
@@ -43,10 +45,15 @@ struct CategoryView: View {
         .font(.customBody)
         .navigationSubtitleIfAvailable(subtitle)
         .task {
-            if categories.isEmpty, poems.isEmpty {
+            if categories.isEmpty, poems.isEmpty || isMissingExcerpts {
                 await viewModel.fetchCategories(parentCatId: parentCatId)
             }
         }
+    }
+
+    /// Poems cached before `excerpt` existed have none, so fetch once more to fill them in.
+    private var isMissingExcerpts: Bool {
+        !poems.isEmpty && poems.allSatisfy(\.excerpt.isEmpty)
     }
 
     /// e.g. "12 poems". Hidden while loading or for categories that hold only subcategories.

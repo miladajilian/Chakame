@@ -40,6 +40,9 @@ extension Poem {
         if let urlSlug {
             entity.urlSlug = urlSlug
         }
+        if let excerpt {
+            entity.excerpt = excerpt
+        }
         return entity
     }
 }
