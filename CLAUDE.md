@@ -45,6 +45,13 @@ ChakameUITests/                         # launch smoke test
 - **Services behind protocols.** Each view model declares its `…Fetcher` / `…Store` protocols, takes them through `init`, and gets a `…Mock` for previews and tests. Fetchers have production defaults. Stores need a `ModelContext`, so `AppDependencies` builds them. Follow `Centuries/` as the reference feature.
 - **Navigation.** Each tab has its own `NavigationStack`. Links push values (`CategoryRoute`, `PoemRoute`), and each stack registers `navigationDestination(for:)` once per route type. Don't use `NavigationLink(destination:)`: it pops right away when the presenting `@Query` list re-renders after a save.
 - **Networking.** Add an endpoint as a `RequestProtocol` type under `Core/Data/api/request/`, and decode with `DataParser` into a domain struct.
+- **Ganjoor API reference.** The API docs are at https://api.ganjoor.net/index.html. **Check them before you add a feature, change anything, or fix a bug that touches the API**, so you call the right endpoint with the right parameters and decode the real response shape. Don't guess from the existing code.
+  - That page is a JavaScript Swagger UI, so a page fetch shows nothing. Read the OpenAPI spec at `https://api.ganjoor.net/swagger/v1/swagger.json` instead. It's about 1 MB, so filter it with `jq` rather than reading it whole:
+    - list endpoints: `curl -s https://api.ganjoor.net/swagger/v1/swagger.json | jq -r '.paths | keys[]' | grep '^/api/ganjoor'`
+    - one endpoint: `… | jq '.paths["/api/ganjoor/poem/{id}"]'`
+    - a response model: `… | jq '.components.schemas.GanjoorPoemCompleteViewModel'`
+  - The app only reads public `GET` endpoints under `/api/ganjoor/`. Many others need auth or write data; don't use those.
+  - When a response field changes or you add one, update the domain struct in `Core/Domain/model/` and its `*Mock.json` in `Preview Content/` to match the spec.
 - **Persistence (SwiftData).**
   - API data is cached; the only user-owned data is `PoemEntity.isFavorite`.
   - `@Model` classes (`*Entity`) are hand-written in `Core/Data/swiftData/models/`. Any change to a model needs a new `VersionedSchema` and a stage in `ChakameMigrationPlan`.
