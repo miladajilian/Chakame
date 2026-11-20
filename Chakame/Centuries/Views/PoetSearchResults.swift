@@ -20,7 +20,7 @@ struct PoetSearchResults: View {
 
     var body: some View {
         ForEach(poets) { poet in
-            NavigationLink(value: CategoryRoute(id: poet.rootCatId, title: poet.nickname)) {
+            NavigationLink(value: CategoryRoute(poet: poet)) {
                 PoetRow(poet: poet)
             }
         }

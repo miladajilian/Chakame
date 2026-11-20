@@ -28,7 +28,7 @@ struct CenturiesView: View {
                     ForEach(centuries) { century in
                         Section(header: Text(viewModel.getCenturyTitle(century: century))) {
                             ForEach(sortedPoets(of: century)) { poet in
-                                NavigationLink(value: CategoryRoute(id: poet.rootCatId, title: poet.nickname)) {
+                                NavigationLink(value: CategoryRoute(poet: poet)) {
                                     PoetRow(poet: poet)
                                 }
                             }
@@ -76,7 +76,7 @@ struct CenturiesView: View {
     }
 
     private func categoryView(for route: CategoryRoute) -> some View {
-        CategoryView(viewModel: viewModel.categoryViewModel, parentCatId: route.id)
+        CategoryView(viewModel: viewModel.categoryViewModel, route: route)
             .persianLayout()
             .navigationTitle(route.title)
     }

@@ -10,13 +10,25 @@ import SwiftUI
 
 struct CategoryView: View {
     let viewModel: CategoryViewModel
-    let parentCatId: Int
+    let route: CategoryRoute
     @Query private var categories: [CategoryEntity]
     @Query private var poems: [PoemEntity]
 
-    init(viewModel: CategoryViewModel, parentCatId: Int) {
+    @State private var searchText = ""
+    /// Server search over this category's poems (all of the poet's at the poet's root).
+    @State private var poemSearch: PoemSearchViewModel
+
+    private var parentCatId: Int {
+        route.id
+    }
+
+    init(viewModel: CategoryViewModel, route: CategoryRoute) {
         self.viewModel = viewModel
-        self.parentCatId = parentCatId
+        self.route = route
+        let parentCatId = route.id
+        _poemSearch = State(
+            initialValue: viewModel.makeSearchViewModel(poetId: route.poetId, catId: route.searchCatId)
+        )
         _categories = Query(
             filter: #Predicate<CategoryEntity> { $0.parentId == parentCatId },
             sort: \CategoryEntity.title
@@ -29,25 +41,39 @@ struct CategoryView: View {
 
     var body: some View {
         List {
-            ForEach(categories) { category in
-                NavigationLink(category.title, value: CategoryRoute(id: category.id, title: category.title))
-            }
-            ForEach(poems.indices, id: \.self) { index in
-                NavigationLink(value: PoemRoute(poems: poems, index: index)) {
-                    PoemRow(title: poems[index].title, excerpt: poems[index].excerpt)
-                }
-            }
-            if viewModel.isLoading, categories.isEmpty, poems.isEmpty {
-                ProgressView("Fetching category list")
-                    .frame(maxWidth: .infinity)
+            if searchText.isEmpty {
+                contents
+            } else {
+                PoemSearchSection(viewModel: poemSearch)
             }
         }
         .font(.customBody)
+        .searchable(text: $searchText, prompt: Text("Search in \(route.title)"))
+        .poemSearch(poemSearch, text: searchText)
         .navigationSubtitleIfAvailable(subtitle)
         .task {
             if categories.isEmpty, poems.isEmpty || isMissingExcerpts {
                 await viewModel.fetchCategories(parentCatId: parentCatId)
             }
+        }
+    }
+
+    @ViewBuilder
+    private var contents: some View {
+        ForEach(categories) { category in
+            NavigationLink(
+                category.title,
+                value: CategoryRoute(id: category.id, title: category.title, poetId: route.poetId)
+            )
+        }
+        ForEach(poems.indices, id: \.self) { index in
+            NavigationLink(value: PoemRoute(poems: poems, index: index)) {
+                PoemRow(title: poems[index].title, excerpt: poems[index].excerpt)
+            }
+        }
+        if viewModel.isLoading, categories.isEmpty, poems.isEmpty {
+            ProgressView("Fetching category list")
+                .frame(maxWidth: .infinity)
         }
     }
 
@@ -67,7 +93,7 @@ struct CategoryView: View {
         NavigationStack {
             CategoryView(
                 viewModel: AppDependencies.preview(container: container).centuryViewModel.categoryViewModel,
-                parentCatId: Poem.mock?.parentId ?? 0
+                route: CategoryRoute(id: Poem.mock?.parentId ?? 0, title: "غزلیات", poetId: 2)
             )
         }
         .modelContainer(container)

@@ -191,12 +191,42 @@
         }
       }
     },
+    "No poems found" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شعری پیدا نشد"
+          }
+        }
+      }
+    },
+    "Poems" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اشعار"
+          }
+        }
+      }
+    },
     "Popular Poets" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "سخنوران پرمخاطب"
+          }
+        }
+      }
+    },
+    "Press Search to find poems" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "برای پیدا کردن شعر، دکمهٔ جستجو را بزنید"
           }
         }
       }
@@ -271,6 +301,36 @@
         }
       }
     },
+    "Search failed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جستجو انجام نشد"
+          }
+        }
+      }
+    },
+    "Search in %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جستجو در %@"
+          }
+        }
+      }
+    },
+    "Searching" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "در حال جستجو"
+          }
+        }
+      }
+    },
     "Setting" : {
       "localizations" : {
         "en" : {
@@ -297,6 +357,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "هنگام خواندن شعر، روی قلب بزنید تا اینجا ذخیره شود."
+          }
+        }
+      }
+    },
+    "Try again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "دوباره"
+          }
+        }
+      }
+    },
+    "Type at least two letters to search poems" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "برای جستجوی شعر دست‌کم دو حرف بنویسید"
           }
         }
       }

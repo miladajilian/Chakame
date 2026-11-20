@@ -30,17 +30,28 @@ final class CategoryViewModel {
 
     @ObservationIgnored private let categoriesFetcher: CategoriesFetcher
     @ObservationIgnored private let categoryStore: CategoryStore
+    @ObservationIgnored private let poemSearcher: PoemSearcher
+    @ObservationIgnored private let poemSearchStore: PoemSearchStore
 
     let poemViewModel: PoemViewModel
 
     init(
         categoriesFetcher: CategoriesFetcher = FetchCategoriesService(requestManager: RequestManager.shared),
         categoryStore: CategoryStore,
+        poemSearcher: PoemSearcher = CachingPoemSearcher(base: FetchPoemSearchService(requestManager: RequestManager.shared)),
+        poemSearchStore: PoemSearchStore,
         poemViewModel: PoemViewModel
     ) {
         self.categoriesFetcher = categoriesFetcher
         self.categoryStore = categoryStore
+        self.poemSearcher = poemSearcher
+        self.poemSearchStore = poemSearchStore
         self.poemViewModel = poemViewModel
+    }
+
+    /// A server search over one poet's poems, narrowed to `catId` unless it is 0.
+    func makeSearchViewModel(poetId: Int, catId: Int) -> PoemSearchViewModel {
+        PoemSearchViewModel(poetId: poetId, catId: catId, searcher: poemSearcher, store: poemSearchStore)
     }
 
     /// Downloads and stores a category's children. Every call fetches, even while another fetch

@@ -23,6 +23,8 @@ struct CategoryViewModelTests {
         viewModel = CategoryViewModel(
             categoriesFetcher: fetcher,
             categoryStore: CategoryStoreService(context: context),
+            poemSearcher: PoemSearcherMock(),
+            poemSearchStore: PoemSearchStoreService(context: context),
             poemViewModel: PoemViewModel(
                 poemFetcher: PoemFetcherMock(),
                 poemStore: PoemStoreService(context: context),

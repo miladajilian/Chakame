@@ -13,6 +13,8 @@ enum ChakameRequest: RequestProtocol {
     case getCategories(parentId: String)
     case getVerses(poemId: String)
     case getPoem(poemId: String)
+    /// Poems containing `term`. `catId` only narrows the search when `poetId` is set too.
+    case searchPoems(term: String, poetId: Int, catId: Int, page: Int, pageSize: Int)
     var path: String {
         switch self {
         case .getCenturies:
@@ -25,6 +27,28 @@ enum ChakameRequest: RequestProtocol {
             "/api/ganjoor/poem/\(poemId)/verses"
         case let .getPoem(poemId):
             "/api/ganjoor/poem/\(poemId)"
+        case .searchPoems:
+            "/api/ganjoor/poems/search"
+        }
+    }
+
+    var urlParams: [String: String?] {
+        switch self {
+        case let .searchPoems(term, poetId, catId, page, pageSize):
+            var params: [String: String?] = [
+                "term": term,
+                "PageNumber": "\(page)",
+                "PageSize": "\(pageSize)"
+            ]
+            if poetId != 0 {
+                params["poetId"] = "\(poetId)"
+                if catId != 0 {
+                    params["catId"] = "\(catId)"
+                }
+            }
+            return params
+        default:
+            return [:]
         }
     }
 

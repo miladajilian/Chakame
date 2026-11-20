@@ -16,7 +16,8 @@ struct AppDependencies {
         container: ModelContainer,
         centuriesFetcher: CenturiesFetcher = FetchCenturiesService(requestManager: RequestManager.shared),
         categoriesFetcher: CategoriesFetcher = FetchCategoriesService(requestManager: RequestManager.shared),
-        poemFetcher: PoemFetcher = FetchPoemService(requestManager: RequestManager.shared)
+        poemFetcher: PoemFetcher = FetchPoemService(requestManager: RequestManager.shared),
+        poemSearcher: PoemSearcher = CachingPoemSearcher(base: FetchPoemSearchService(requestManager: RequestManager.shared))
     ) {
         let context = container.mainContext
         let poemViewModel = PoemViewModel(
@@ -27,6 +28,8 @@ struct AppDependencies {
         let categoryViewModel = CategoryViewModel(
             categoriesFetcher: categoriesFetcher,
             categoryStore: CategoryStoreService(context: context),
+            poemSearcher: poemSearcher,
+            poemSearchStore: PoemSearchStoreService(context: context),
             poemViewModel: poemViewModel
         )
         let centuryViewModel = CenturyViewModel(
@@ -48,7 +51,8 @@ struct AppDependencies {
             container: container,
             centuriesFetcher: CenturiesFetcherMock(),
             categoriesFetcher: CategoriesFetcherMock(),
-            poemFetcher: PoemFetcherMock()
+            poemFetcher: PoemFetcherMock(),
+            poemSearcher: PoemSearcherMock()
         )
     }
 }

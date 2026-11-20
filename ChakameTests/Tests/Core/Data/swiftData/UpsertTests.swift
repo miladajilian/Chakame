@@ -54,6 +54,21 @@ struct UpsertTests {
         #expect(poem.fullTitle == "حافظ » غزل ۱")
     }
 
+    @Test func savingASearchResultKeepsFavoriteAndParent() async throws {
+        try await CategoryStoreService(context: context).save(poems: [Poem(id: 30, parentId: 5, title: "غزل ۱")])
+        let poem = try #require(try context.first(where: #Predicate<PoemEntity> { $0.id == 30 }))
+        try PoemStoreService(context: context).toggleFavorite(poem)
+
+        let result = PoemSearchResult(id: 30, title: "غزل ۱", fullTitle: "حافظ » غزل ۱", plainText: "الا یا ایها الساقی")
+        let saved = try PoemSearchStoreService(context: context).save(results: [result])
+
+        #expect(saved.map(\.id) == [30])
+        #expect(try context.fetchCount(FetchDescriptor<PoemEntity>()) == 1)
+        #expect(poem.isFavorite)
+        #expect(poem.parentId == 5)
+        #expect(poem.excerpt == "الا یا ایها الساقی")
+    }
+
     @Test func excerptIsStoredAndKeptWhenTheSinglePoemEndpointLeavesItOut() async throws {
         let store = CategoryStoreService(context: context)
         try await store.save(poems: [Poem(id: 20, parentId: 5, title: "غزل ۱", excerpt: "الا یا ایها الساقی")])

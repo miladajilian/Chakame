@@ -29,6 +29,8 @@ struct CenturyViewModelTests {
             categoryViewModel: CategoryViewModel(
                 categoriesFetcher: CategoriesFetcherMock(),
                 categoryStore: CategoryStoreService(context: context),
+                poemSearcher: PoemSearcherMock(),
+                poemSearchStore: PoemSearchStoreService(context: context),
                 poemViewModel: poemViewModel
             )
         )
